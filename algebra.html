@@ -105,7 +105,9 @@
 
     div.innerHTML = `
       <img src="algebra/${img.archivo}" alt="${img.texto}">
-      <p>${img.texto}</p>
+      <div class="overlay">
+        <p>${img.texto}</p>
+      </div>
     `;
 
     contenedor.appendChild(div);
