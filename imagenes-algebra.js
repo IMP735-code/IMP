@@ -1,7 +1,7 @@
 const imagenesAlgebra = [
   {
-    archivo: "ecuacion-radicacion.png",
-    texto: "Ecuación con radicación paso a paso"
+    archivo: "problema-algebra-1.png",
+    texto: "Racionalización, la serie telescópica."
   },
   {
     archivo: "ecuaciones-exponenciales.png",
