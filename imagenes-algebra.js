@@ -4,8 +4,8 @@ const imagenesAlgebra = [
     texto: "Ecuación con radicación paso a paso"
   },
   {
-    archivo: "funciones.png",
-    texto: "Funciones algebraicas"
+    archivo: "ecuaciones-exponenciales.png",
+    texto: "Ecuación exponencial, binomio al cuadrado."
   },
   {
     archivo: "matrices.png",
