@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google-site-verification" content="m6_9ZJhR9pycQsuCeUGkgwQMKzX6hV_fY2I3AE6hDIo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMP | Matemática y Mecánica</title>
+  <meta name="description" content="IMP es una plataforma educativa con contenidos visuales de Álgebra, Geometría, Cálculo y Mecánica." />
+
+  <style>
+    :root {
+      --primary: #0b4fb3;
+      --bg: #f5f7fb;
+      --text: #222;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    header img {
+      height: 60px;
+      width: 60px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+    }
+
+    .upload-note {
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: 1rem;
+    }
+
+    .ads {
+      background: #eaeaea;
+      border: 2px dashed #bbb;
+      padding: 1rem;
+      text-align: center;
+      margin: 2rem 0;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      background: #111;
+      color: #ccc;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #ccc;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- LOGO -->
+    <img src="logo.png" alt="Logo IMP" />
+    <h1>IMP</h1>
+  </header>
+
+  <main>
+
+    <section class="intro">
+      <h2>Plataforma Educativa Visual</h2>
+      <p>Explora conceptos fundamentales de matemáticas y mecánica mediante imágenes, gráficos y material visual.</p>
+    </section>
+
+    <!-- BLOQUE DE ANUNCIO SUPERIOR -->
+    <div class="ads">
+      <!-- Google AdSense: Banner superior -->
+      Espacio para anuncio (728x90)
+    </div>
+
+    <section class="grid">
+
+      <article class="card">
+        <h2>Álgebra</h2>
+        <p>Contenido visual sobre ecuaciones, funciones, matrices y expresiones algebraicas.</p>
+        <div class="upload-note">📁 Subir imágenes JPG / PNG en /algebra</div>
+      </article>
+
+      <article class="card">
+        <h2>Geometría</h2>
+        <p>Figuras, ángulos, polígonos y visualizaciones geométricas claras.</p>
+        <div class="upload-note">📁 Subir imágenes JPG / PNG en /geometria</div>
+      </article>
+
+      <article class="card">
+        <h2>Cálculo</h2>
+        <p>Límites, derivadas, integrales y gráficos explicativos.</p>
+        <div class="upload-note">📁 Subir imágenes JPG / PNG en /calculo</div>
+      </article>
+
+      <article class="card">
+        <h2>Mecánica</h2>
+        <p>Diagramas de fuerzas, movimiento, leyes de Newton y sistemas físicos.</p>
+        <div class="upload-note">📁 Subir imágenes JPG / PNG en /mecanica</div>
+      </article>
+
+    </section>
+
+    <!-- BLOQUE DE ANUNCIO INFERIOR -->
+    <div class="ads">
+      <!-- Google AdSense: anuncio dentro del contenido -->
+      Espacio para anuncio responsive
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 IMP — Educación Visual</p>
+    <p>
+      <a href="privacidad.html">Privacidad</a> |
+      <a href="cookies.html">Cookies</a> |
+      <a href="aviso-legal.html">Aviso Legal</a> |
+      <a href="sobre-nosotros.html">Sobre IMP</a>
+    </p>
+  </footer>
+
+</body>
+</html>
