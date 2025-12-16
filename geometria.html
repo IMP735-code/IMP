@@ -185,8 +185,8 @@
 
   <script>
     // Datos de ejemplo (reemplaza con tu archivo imagenes-algebra.js)
-    const imagenesAlgebra = [
-      { archivo: "imagen1.jpg", texto: "Ecuaciones lineales básicas" },
+    const imagenesGeometria = [
+      { archivo: "problema-geometria-1.jpg", texto: "Geometría analítica, parábola, longuitud máxima." },
       { archivo: "imagen2.jpg", texto: "Sistemas de ecuaciones" },
       { archivo: "imagen3.jpg", texto: "Factorización de polinomios" },
       { archivo: "imagen4.jpg", texto: "Funciones cuadráticas" },
@@ -201,11 +201,11 @@
     const cerrar = document.querySelector(".cerrar");
 
     // Generar galería
-    imagenesAlgebra.forEach(img => {
+    imagenesGeometria.forEach(img => {
       const div = document.createElement("div");
       div.className = "item";
       div.innerHTML = `
-        <img src="algebra/${img.archivo}" alt="${img.texto}">
+        <img src="geometria/${img.archivo}" alt="${img.texto}">
         <div class="overlay">
           <p>${img.texto}</p>
         </div>
@@ -213,7 +213,7 @@
       
       div.addEventListener("click", () => {
         modal.classList.add("activo");
-        modalImg.src = `algebra/${img.archivo}`;
+        modalImg.src = `geometria/${img.archivo}`;
         modalImg.alt = img.texto;
         modalTexto.textContent = img.texto;
         document.body.style.overflow = "hidden";
