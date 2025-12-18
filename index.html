@@ -50,6 +50,87 @@
       padding: 2rem 1rem;
     }
 
+    .recientes {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+
+    .recientes h2 {
+      text-align: center;
+      color: #d62828;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .recientes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .reciente-item {
+      background: white;
+      border-radius: 18px;
+      border: 3px solid #8a8a8a;
+      height: 260px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .reciente-item:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    }
+
+    .reciente-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .recientes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .reciente-item {
+        height: 220px;
+      }
+    }
+
+    .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.5rem;
+      background: rgba(0,0,0,0.4);
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem 0.8rem;
+      border-radius: 50%;
+      user-select: none;
+    }
+
+    .prev { left: 20px; }
+    .next { right: 20px; }
+
+    .nav:hover {
+      background: rgba(0,0,0,0.7);
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        font-size: 2rem;
+      }
+    }
+
+    
     .intro {
       text-align: center;
       margin-bottom: 2.5rem;
@@ -137,6 +218,29 @@
       Espacio para anuncio (728x90)
     </div>
 
+    <section class="recientes">
+      <h2>Problemas recientes</h2>
+
+      <div class="recientes-grid" id="recientesGrid">
+        <div class="reciente-item" data-index="0">
+          <img src="algebra/problema-algebra-1.png" alt="Problema de álgebra" loading="lazy">
+        </div>
+
+        <div class="reciente-item" data-index="1">
+          <img src="geometria/problema-geometria-1.png" alt="Problema de geometría" loading="lazy">
+        </div>
+
+        <div class="reciente-item" data-index="2">
+          <img src="calculo/problema-calculo-1.png" alt="Problema de cálculo" loading="lazy">
+        </div>
+
+        <div class="reciente-item" data-index="3">
+          <img src="mecanica/problema-mecanica-1.png" alt="Problema de mecánica" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+
     <section class="grid">
 
       <article class="card">
@@ -182,6 +286,63 @@
       <a href="sobre-nosotros.html">Sobre IMP</a>
     </p>
   </footer>
+
+    <div id="modalRecientes" class="modal">
+      <span class="cerrar">&times;</span>
+
+      <button class="nav prev">⬅</button>
+      <img id="modalImgRecientes" class="modal-img" alt="">
+      <button class="nav next">➡</button>
+    </div>
+
+    <script>
+      const items = document.querySelectorAll(".reciente-item img");
+      const modal = document.getElementById("modalRecientes");
+      const modalImg = document.getElementById("modalImgRecientes");
+      const cerrar = modal.querySelector(".cerrar");
+      const prev = modal.querySelector(".prev");
+      const next = modal.querySelector(".next");
+
+      let actual = 0;
+      const imagenes = Array.from(items).map(img => img.src);
+
+      function abrirModal(index) {
+        actual = index;
+        modalImg.src = imagenes[actual];
+        modal.classList.add("activo");
+        document.body.style.overflow = "hidden";
+      }
+
+      items.forEach((img, i) => {
+        img.addEventListener("click", () => abrirModal(i));
+      });
+
+      function cerrarModal() {
+        modal.classList.remove("activo");
+        document.body.style.overflow = "";
+      }
+
+      function cambiar(dir) {
+        actual = (actual + dir + imagenes.length) % imagenes.length;
+        modalImg.src = imagenes[actual];
+      }
+
+      cerrar.onclick = cerrarModal;
+      prev.onclick = () => cambiar(-1);
+      next.onclick = () => cambiar(1);
+
+      modal.onclick = e => {
+        if (e.target === modal) cerrarModal();
+      };
+
+      document.addEventListener("keydown", e => {
+        if (!modal.classList.contains("activo")) return;
+        if (e.key === "Escape") cerrarModal();
+        if (e.key === "ArrowLeft") cambiar(-1);
+        if (e.key === "ArrowRight") cambiar(1);
+      });
+    </script>
+
 
 </body>
 </html>
