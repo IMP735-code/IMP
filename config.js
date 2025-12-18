@@ -17,6 +17,9 @@ const GALERIA_CONFIG = {
         "todos/problema-5.png",
         "todos/problema-6.png",
         "todos/problema-7.png",
-        "todos/problema-8.png"
+        "todos/problema-8.png",
+        "todos/problema-9.png",
+        "todos/problema-10.png",
+        "todos/problema-11.png"
     ]
 };
