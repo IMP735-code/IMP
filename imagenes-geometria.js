@@ -4,11 +4,23 @@ const imagenesGeometria = [
     texto: "Geometría analítica, paraábola, longitud máxima."
   },
   {
-    archivo: "funciones.png",
-    texto: "Funciones algebraicas"
+    archivo: "problema-geometria-2.png",
+    texto: "Área, semejanza de triángulos."
   },
   {
-    archivo: "matrices.png",
-    texto: "Matrices y operaciones"
+    archivo: "problema-geometria-3.png",
+    texto: "Trazos auxiliares, triángulo isósceles."
+  },
+  {
+    archivo: "problema-geometria-4.png",
+    texto: "Geometría analítica, rectas, pendiente."
+  },
+  {
+    archivo: "problema-geometria-5.png",
+    texto: "Áreas, trazos auxiliares."
+  },
+  {
+    archivo: "problema-geometria-6.png",
+    texto: "Área de un cuadrilátero en función de sus diagonales y el ángulo que forma."
   }
 ];
