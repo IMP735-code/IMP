@@ -5,116 +5,146 @@
   <title>Problemas Recientes | IMP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* --- Estilos Generales --- */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f8faff; /* Color más limpio acorde a la imagen */
+      background: linear-gradient(180deg, #f5f7fb, #eef2ff);
       margin: 0;
       padding: 1rem;
     }
     h1 {
       text-align: center;
-      color: #004aad; /* Azul institucional */
+      color: #d32f2f;
       margin-bottom: 0.5rem;
-      font-size: 2.2rem;
-      font-weight: 800;
-      text-transform: uppercase;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(211,47,47,0.1);
     }
     .subtitle {
       text-align: center;
-      color: #555;
-      margin-bottom: 2.5rem;
+      color: #666;
+      margin-bottom: 2rem;
       font-size: 1.1rem;
     }
-
-    /* --- Galería y Tarjetas Neón --- */
     .galeria {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      max-width: 1100px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
       margin: auto;
-      padding: 10px;
     }
-
     .item {
       position: relative;
-      background: #fff;
-      border-radius: 20px;
       overflow: hidden;
+      background: #050b1a;
+      border-radius: 16px;
       cursor: pointer;
-      /* Efecto Neón Azul Inicial */
-      border: 2px solid #00d4ff;
-      box-shadow: 0 0 10px rgba(0, 212, 255, 0.2), 
-                  0 0 20px rgba(0, 212, 255, 0.1);
-      
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 2px solid #00e5ff;
+      box-shadow:
+        0 0 12px rgba(0,229,255,0.6),
+        0 0 25px rgba(0,229,255,0.4);
+      transition: 
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
     }
 
-    /* Efecto Neón Rojo al pasar el mouse (Hover) */
     .item:hover {
-      transform: translateY(-10px);
-      border-color: #ff003c;
-      box-shadow: 0 0 15px rgba(255, 0, 60, 0.6), 
-                  0 0 30px rgba(255, 0, 60, 0.4);
+      transform: translateY(-8px) scale(1.03);
+      border-color: #ff1744;
+      box-shadow:
+        0 0 18px rgba(255,23,68,0.8),
+        0 0 40px rgba(255,23,68,0.6);
     }
 
     .item img {
       width: 100%;
-      height: 250px;
+      height: 220px;
       object-fit: cover;
-      display: block;
+      filter: brightness(0.95);
+      transition: transform 0.5s ease, filter 0.5s ease;
     }
 
-    .overlay {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    .item:hover img {
+      transform: scale(1.15);
+      filter: brightness(1.1);
+    }
+
+
+    }
+    .overlay p {
       color: white;
-      padding: 15px;
-      box-sizing: border-box;
+      font-size: 0.95rem;
+      margin: 0;
+      font-weight: 500;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    a {
+      display: block;
+      margin: 2rem auto;
       text-align: center;
-      font-weight: bold;
+      text-decoration: none;
+      color: #d32f2f;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #b71c1c;
     }
 
-    /* --- Modal y Navegación --- */
+    /* MODAL */
     .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
+      z-index: 999;
       inset: 0;
-      background: rgba(10, 15, 30, 0.95); /* Fondo oscuro profundo */
-      backdrop-filter: blur(5px);
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      animation: fadeIn 0.3s ease;
+    }
+    .modal.activo {
+      display: flex;
+    }
+    .modal-content {
+      position: relative;
+      max-width: 95%;
+      max-height: 90vh;
+      display: flex;
       align-items: center;
       justify-content: center;
     }
-    .modal.activo { display: flex; }
-
-    .modal-content {
-      position: relative;
-      display: flex;
-      align-items: center;
-      width: 90%;
-      max-width: 800px;
-    }
-
     .modal-img {
-      width: 100%;
-      max-height: 80vh;
-      border-radius: 15px;
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: 16px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+      animation: zoomIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       object-fit: contain;
-      border: 3px solid #00d4ff; /* Borde neón en el modal */
-      box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
     }
-
-    /* Flechas de Navegación */
+    .modal-texto {
+      color: #fff;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      text-align: center;
+      max-width: 700px;
+      line-height: 1.6;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
     .modal-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
       color: white;
+      border: 2px solid rgba(255,255,255,0.3);
       width: 50px;
       height: 50px;
       border-radius: 50%;
@@ -122,119 +152,241 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 2rem;
-      border: 1px solid rgba(255,255,255,0.3);
-      transition: 0.3s;
+      font-size: 1.8rem;
+      transition: all 0.3s ease;
       user-select: none;
-      z-index: 1010;
     }
     .modal-nav:hover {
-      background: #ff003c; /* Cambio a rojo neón en hover */
-      box-shadow: 0 0 15px #ff003c;
-      border-color: transparent;
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-50%) scale(1.1);
     }
-    .prev { left: -60px; }
-    .next { right: -60px; }
-
+    .modal-nav.prev {
+      left: 20px;
+    }
+    .modal-nav.next {
+      right: 20px;
+    }
     .cerrar {
       position: absolute;
-      top: -50px;
-      right: 0;
+      top: 25px;
+      right: 35px;
       color: white;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       cursor: pointer;
+      transition: transform 0.2s ease, color 0.2s ease;
+      font-weight: 300;
+      line-height: 1;
+      user-select: none;
+      z-index: 1000;
+    }
+    .cerrar:hover {
+      transform: scale(1.15) rotate(90deg);
+      color: #ff4444;
+    }
+    .modal-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      background: rgba(0,0,0,0.6);
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    .modal-img {
+      cursor: zoom-in;
+    }
+
+    .modal.fullscreen .modal-img {
+      cursor: zoom-out;
+    }
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes zoomIn {
+      from { 
+        transform: scale(0.7); 
+        opacity: 0; 
+      }
+      to { 
+        transform: scale(1); 
+        opacity: 1; 
+      }
     }
 
     /* Responsive */
-    @media (max-width: 900px) {
-      .prev { left: 10px; }
-      .next { right: 10px; }
-      .modal-nav { background: rgba(0,0,0,0.5); }
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .galeria {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+      }
+      .item img {
+        height: 180px;
+      }
+      .modal-nav {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+      }
+      .modal-nav.prev {
+        left: 10px;
+      }
+      .modal-nav.next {
+        right: 10px;
+      }
+      .cerrar {
+        font-size: 2.2rem;
+        top: 15px;
+        right: 20px;
+      }
     }
   </style>
 </head>
 <body>
-
   <h1>Problemas Recientes</h1>
-  <p class="subtitle">Explora los últimos desafíos de matemáticas y mecánica</p>
+  <p class="subtitle">Los problemas más recientes subidos a la plataforma</p>
+  <div class="galeria" id="galeria"></div>
+  <a href="index.html">← Volver al inicio</a>
 
-  <div class="galeria" id="galeria">
-    </div>
-
+  <!-- MODAL -->
   <div id="modal" class="modal">
+    <span class="cerrar">&times;</span>
     <div class="modal-content">
-      <span class="cerrar">&times;</span>
-      <div class="modal-nav prev">❮</div>
-      <img class="modal-img" id="modalImg" src="" alt="">
-      <div class="modal-nav next">❯</div>
+      <div class="modal-nav prev">‹</div>
+      <img class="modal-img" id="modalImg" alt="">
+      <div class="modal-nav next">›</div>
     </div>
+    <p class="modal-texto" id="modalTexto"></p>
+    <div class="modal-counter" id="modalCounter"></div>
   </div>
 
+  <!-- CARGA DE IMÁGENES -->
+  <script src="imagenes-recientes.js"></script>
   <script>
-    // Simulación de datos (Asegúrate de tener tu archivo imagenes-recientes.js)
-    const imagenesRecientes = [
-      { archivo: "p1.jpg", texto: "Problema de Estática" },
-      { archivo: "p2.jpg", texto: "Cálculo Integral" },
-      { archivo: "p3.jpg", texto: "Dinámica de Fluidos" },
-      { archivo: "p4.jpg", texto: "Álgebra Lineal" }
-    ];
-    
     const GITHUB_BASE_URL = "https://raw.githubusercontent.com/IMP735-code/IMP/main/recientes/";
+    
     const contenedor = document.getElementById("galeria");
     const modal = document.getElementById("modal");
     const modalImg = document.getElementById("modalImg");
+    const modalTexto = document.getElementById("modalTexto");
+    const modalCounter = document.getElementById("modalCounter");
     const cerrar = document.querySelector(".cerrar");
-    const prevBtn = document.querySelector(".prev");
-    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".modal-nav.prev");
+    const nextBtn = document.querySelector(".modal-nav.next");
 
     let currentIndex = 0;
 
-    // Crear tarjetas neón
+    // Generar galería
     imagenesRecientes.forEach((img, index) => {
       const div = document.createElement("div");
       div.className = "item";
+      const imgURL = GITHUB_BASE_URL + img.archivo;
       div.innerHTML = `
-        <img src="${GITHUB_BASE_URL}${img.archivo}" alt="${img.texto}">
-        <div class="overlay">${img.texto}</div>
+        <img src="${imgURL}" alt="${img.texto}">
+        <div class="overlay">
+          <p>${img.texto}</p>
+        </div>
       `;
-      div.onclick = () => openModal(index);
+      
+      div.addEventListener("click", () => {
+        openModal(index);
+      });
+      
       contenedor.appendChild(div);
     });
 
     function openModal(index) {
       currentIndex = index;
-      updateModal();
       modal.classList.add("activo");
+      updateModal();
       document.body.style.overflow = "hidden";
     }
 
-    function updateModal() {
-      modalImg.src = GITHUB_BASE_URL + imagenesRecientes[currentIndex].archivo;
+    function cerrarModal() {
+      modal.classList.remove("activo");
+      document.body.style.overflow = "";
     }
 
-    function nextImg() {
+    function updateModal() {
+      const imgURL = GITHUB_BASE_URL + imagenesRecientes[currentIndex].archivo;
+      modalImg.src = imgURL;
+      modalImg.alt = imagenesRecientes[currentIndex].texto;
+      modalTexto.textContent = imagenesRecientes[currentIndex].texto;
+      modalCounter.textContent = `${currentIndex + 1} / ${imagenesRecientes.length}`;
+    }
+
+    function nextImage() {
       currentIndex = (currentIndex + 1) % imagenesRecientes.length;
       updateModal();
     }
 
-    function prevImg() {
+    function prevImage() {
       currentIndex = (currentIndex - 1 + imagenesRecientes.length) % imagenesRecientes.length;
       updateModal();
     }
 
-    // Eventos
-    nextBtn.onclick = (e) => { e.stopPropagation(); nextImg(); };
-    prevBtn.onclick = (e) => { e.stopPropagation(); prevImg(); };
-    cerrar.onclick = () => { modal.classList.remove("activo"); document.body.style.overflow = ""; };
-    modal.onclick = (e) => { if(e.target === modal) cerrar.onclick(); };
+    cerrar.onclick = cerrarModal;
+    nextBtn.onclick = nextImage;
+    prevBtn.onclick = prevImage;
 
-    // Teclado
+    modal.onclick = (e) => {
+      if (e.target === modal) cerrarModal();
+    };
+
     document.addEventListener("keydown", (e) => {
       if (!modal.classList.contains("activo")) return;
-      if (e.key === "ArrowRight") nextImg();
-      if (e.key === "ArrowLeft") prevImg();
-      if (e.key === "Escape") cerrar.onclick();
+      if (e.key === "Escape") cerrarModal();
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+    });
+
+    // Gestos táctiles
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    modalImg.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    modalImg.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchEndX < touchStartX - 50) nextImage();
+      if (touchEndX > touchStartX + 50) prevImage();
     });
   </script>
+
+  <script>
+  // FULLSCREEN con doble clic
+    modalImg.addEventListener("dblclick", () => {
+      if (!document.fullscreenElement) {
+        modal.requestFullscreen().catch(err => {
+          console.log("Error fullscreen:", err);
+        });
+        modal.classList.add("fullscreen");
+      } else {
+        document.exitFullscreen();
+        modal.classList.remove("fullscreen");
+      }
+    });
+
+  // Salir de fullscreen si se cierra el modal
+    function cerrarModal() {
+      modal.classList.remove("activo");
+      modal.classList.remove("fullscreen");
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+      document.body.style.overflow = "";
+    }
+  </script>
+
 </body>
 </html>
