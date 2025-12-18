@@ -1,348 +1,547 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="google-site-verification" content="m6_9ZJhR9pycQsuCeUGkgwQMKzX6hV_fY2I3AE6hDIo" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IMP | Matemática y Mecánica</title>
-  <meta name="description" content="IMP es una plataforma educativa con contenidos visuales de Álgebra, Geometría, Cálculo y Mecánica." />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMP - Plataforma Educativa Visual</title>
   <style>
-    :root {
-      --primary: #0b4fb3;
-      --bg: #f5f7fb;
-      --text: #222;
-      --card: #ffffff;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    * { box-sizing: border-box; }
-
     body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, #f5f7fb, #eef2ff);
+      color: #333;
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, #0b4fb3, #1565c0);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      box-shadow: 0 4px 12px rgba(11,79,179,0.3);
+    }
+
+    .logo {
+      font-size: 3rem;
+      font-weight: 900;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+      letter-spacing: 2px;
+    }
+
+    .header-title {
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0b4fb3;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
       line-height: 1.6;
     }
 
-    header {
-      background: var(--primary);
-      color: white;
-      padding: 1rem 2rem;
+    /* BANNER ANUNCIO */
+    .banner {
+      max-width: 728px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .banner-box {
+      background: white;
+      border: 2px dashed #ccc;
+      border-radius: 12px;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      color: #999;
+      font-size: 1.1rem;
+    }
+
+    /* PROBLEMAS RECIENTES */
+    .problemas-section {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .problemas-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #d32f2f;
+      margin-bottom: 2rem;
+    }
+
+    .problemas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .problema-card {
+      background: white;
+      border: 3px solid #555;
+      border-radius: 16px;
+      aspect-ratio: 3/4;
       display: flex;
       align-items: center;
-      gap: 1rem;
-    }
-
-    header img {
-      height: 60px;
-      width: 60px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-
-    main {
-      max-width: 1100px;
-      margin: auto;
-      padding: 2rem 1rem;
-    }
-
-    .recientes {
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-
-    .recientes h2 {
-      text-align: center;
-      color: #d62828;
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .recientes-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.2rem;
-    }
-
-    .reciente-item {
-      background: white;
-      border-radius: 18px;
-      border: 3px solid #8a8a8a;
-      height: 260px;
+      justify-content: center;
       cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
     }
 
-    .reciente-item:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    .problema-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      border-color: #0b4fb3;
     }
 
-    .reciente-item img {
+    .problema-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.5s ease;
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .recientes-grid {
+    .problema-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .problema-placeholder {
+      color: #999;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    /* SECCIÓN ÁLGEBRA */
+    .algebra-section {
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    .algebra-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .algebra-card h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0b4fb3;
+      margin-bottom: 1rem;
+    }
+
+    .algebra-card p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .algebra-link {
+      display: inline-block;
+      color: #0b4fb3;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .algebra-link:hover {
+      color: #073a8a;
+      border-bottom-color: #0b4fb3;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal.activo {
+      display: flex;
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 95%;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+      animation: zoomIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      object-fit: contain;
+    }
+
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.8rem;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .modal-nav:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .modal-nav.prev {
+      left: 20px;
+    }
+
+    .modal-nav.next {
+      right: 20px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 3rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 300;
+      line-height: 1;
+      user-select: none;
+      z-index: 1000;
+    }
+
+    .modal-close:hover {
+      transform: scale(1.15) rotate(90deg);
+      color: #ff4444;
+    }
+
+    .modal-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      background: rgba(0,0,0,0.6);
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { 
+        transform: scale(0.7); 
+        opacity: 0; 
+      }
+      to { 
+        transform: scale(1); 
+        opacity: 1; 
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .logo {
+        font-size: 2.5rem;
+      }
+
+      .header-title {
+        font-size: 1.8rem;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .problemas-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .problemas-title {
+        font-size: 1.5rem;
+      }
+
+      .algebra-card h2 {
+        font-size: 2rem;
+      }
+
+      .modal-nav {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+      }
+
+      .modal-nav.prev {
+        left: 10px;
+      }
+
+      .modal-nav.next {
+        right: 10px;
+      }
+
+      .modal-close {
+        font-size: 2.5rem;
+        top: 15px;
+        right: 20px;
+      }
+
+      .modal-counter {
+        bottom: 10px;
+        font-size: 0.9rem;
+        padding: 0.4rem 1rem;
       }
     }
 
     @media (max-width: 480px) {
-      .reciente-item {
-        height: 220px;
+      .hero {
+        padding: 2rem 1rem;
       }
-    }
 
-    .nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2.5rem;
-      background: rgba(0,0,0,0.4);
-      color: white;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem 0.8rem;
-      border-radius: 50%;
-      user-select: none;
-    }
-
-    .prev { left: 20px; }
-    .next { right: 20px; }
-
-    .nav:hover {
-      background: rgba(0,0,0,0.7);
-    }
-
-    @media (max-width: 600px) {
-      .nav {
-        font-size: 2rem;
+      .problemas-grid {
+        gap: 0.8rem;
       }
-    }
 
-    
-    .intro {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
+      .algebra-card {
+        padding: 1.5rem;
+      }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h2 {
-      margin-top: 0;
-      color: var(--primary);
-    }
-
-    .card p {
-      font-size: 0.95rem;
-    }
-
-    .upload-note {
-      font-size: 0.85rem;
-      color: #555;
-      margin-top: 1rem;
-    }
-
-    .ads {
-      background: #eaeaea;
-      border: 2px dashed #bbb;
-      padding: 1rem;
-      text-align: center;
-      margin: 2rem 0;
-      font-size: 0.9rem;
-    }
-
-    footer {
-      background: #111;
-      color: #ccc;
-      padding: 1.5rem;
-      text-align: center;
-      font-size: 0.85rem;
-    }
-
-    footer a {
-      color: #ccc;
-      margin: 0 0.5rem;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
+      .modal-img {
+        max-height: 75vh;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">IMP</div>
+    <div class="header-title">IMP</div>
+  </div>
 
-  <header>
-    <!-- LOGO -->
-    <img src="logo.png" alt="Logo IMP" />
-    <h1>IMP</h1>
-  </header>
+  <!-- HERO -->
+  <div class="hero">
+    <h1>PLATAFORMA EDUCATIVA VISUAL</h1>
+    <p>Explora conceptos fundamentales de matemáticas y mecánica mediante imágenes, gráficos y material visual.</p>
+  </div>
 
-  <main>
-
-    <section class="intro">
-      <h2>PLATAFORMA EDUCATIVA VISUAL</h2>
-      <p>Explora conceptos fundamentales de matemáticas y mecánica mediante imágenes, gráficos y material visual.</p>
-    </section>
-
-    <!-- BLOQUE DE ANUNCIO SUPERIOR -->
-    <div class="ads">
-      <!-- Google AdSense: Banner superior -->
+  <!-- BANNER ANUNCIO -->
+  <div class="banner">
+    <div class="banner-box">
       Espacio para anuncio (728x90)
     </div>
+  </div>
 
-    <section class="recientes">
-      <h2>Problemas recientes</h2>
-
-      <div class="recientes-grid" id="recientesGrid">
-        <div class="reciente-item" data-index="0">
-          <img src="algebra/problema-algebra-1.png" alt="Problema de álgebra" loading="lazy">
-        </div>
-
-        <div class="reciente-item" data-index="1">
-          <img src="geometria/problema-geometria-1.png" alt="Problema de geometría" loading="lazy">
-        </div>
-
-        <div class="reciente-item" data-index="2">
-          <img src="calculo/problema-calculo-1.png" alt="Problema de cálculo" loading="lazy">
-        </div>
-
-        <div class="reciente-item" data-index="3">
-          <img src="mecanica/problema-mecanica-1.png" alt="Problema de mecánica" loading="lazy">
-        </div>
+  <!-- PROBLEMAS RECIENTES -->
+  <div class="problemas-section">
+    <h2 class="problemas-title">Problemas recientes:</h2>
+    <div class="problemas-grid" id="problemasGrid">
+      <div class="problema-card" data-index="0">
+        <div class="problema-placeholder">imagen<br>1</div>
       </div>
-    </section>
-
-
-    <section class="grid">
-
-      <article class="card">
-        <h2>Álgebra</h2>
-        <p>Contenido visual sobre ecuaciones, funciones, matrices y expresiones algebraicas.</p>
-        <a href="algebra.html">Ver galería</a>
-      </article>
-
-      <article class="card">
-        <h2>Geometría</h2>
-        <p>Figuras, ángulos, polígonos y visualizaciones geométricas claras.</p>
-        <a href="geometria.html">Ver galería</a>
-      </article>
-
-      <article class="card">
-        <h2>Cálculo</h2>
-        <p>Límites, derivadas, integrales y gráficos explicativos.</p>
-        <a href="calculo.html">Ver galería</a>
-      </article>
-
-      <article class="card">
-        <h2>Mecánica</h2>
-        <p>Diagramas de fuerzas, movimiento, leyes de Newton y sistemas físicos.</p>
-        <a href="mecanica.html">Ver galería</a>
-      </article>
-
-    </section>
-
-    <!-- BLOQUE DE ANUNCIO INFERIOR -->
-    <div class="ads">
-      <!-- Google AdSense: anuncio dentro del contenido -->
-      Espacio para anuncio responsive
+      <div class="problema-card" data-index="1">
+        <div class="problema-placeholder">imagen<br>1</div>
+      </div>
+      <div class="problema-card" data-index="2">
+        <div class="problema-placeholder">imagen<br>1</div>
+      </div>
+      <div class="problema-card" data-index="3">
+        <div class="problema-placeholder">imagen<br>1</div>
+      </div>
     </div>
+  </div>
 
-  </main>
-
-  <footer>
-    <p>© 2025 IMP — Educación Visual</p>
-    <p>
-      <a href="privacidad.html">Privacidad</a> |
-      <a href="cookies.html">Cookies</a> |
-      <a href="aviso-legal.html">Aviso Legal</a> |
-      <a href="sobre-nosotros.html">Sobre IMP</a>
-    </p>
-  </footer>
-
-    <div id="modalRecientes" class="modal">
-      <span class="cerrar">&times;</span>
-
-      <button class="nav prev">⬅</button>
-      <img id="modalImgRecientes" class="modal-img" alt="">
-      <button class="nav next">➡</button>
+  <!-- ÁLGEBRA -->
+  <div class="algebra-section">
+    <div class="algebra-card">
+      <h2>Álgebra</h2>
+      <p>Contenido visual sobre ecuaciones, funciones, matrices y expresiones algebraicas.</p>
+      <a href="algebra.html" class="algebra-link">Ver galería →</a>
     </div>
+  </div>
 
-    <script>
-      const items = document.querySelectorAll(".reciente-item img");
-      const modal = document.getElementById("modalRecientes");
-      const modalImg = document.getElementById("modalImgRecientes");
-      const cerrar = modal.querySelector(".cerrar");
-      const prev = modal.querySelector(".prev");
-      const next = modal.querySelector(".next");
+  <!-- MODAL -->
+  <div id="modal" class="modal">
+    <span class="modal-close">&times;</span>
+    <div class="modal-content">
+      <div class="modal-nav prev">‹</div>
+      <img class="modal-img" id="modalImg" alt="">
+      <div class="modal-nav next">›</div>
+    </div>
+    <div class="modal-counter" id="modalCounter"></div>
+  </div>
 
-      let actual = 0;
-      const imagenes = Array.from(items).map(img => img.src);
+  <script>
+    // Configuración: URLs de imágenes de problemas recientes
+    const problemasRecientes = [
+      "https://raw.githubusercontent.com/IMP735-code/IMP/main/problemas/problema1.png",
+      "https://raw.githubusercontent.com/IMP735-code/IMP/main/problemas/problema2.png",
+      "https://raw.githubusercontent.com/IMP735-code/IMP/main/problemas/problema3.png",
+      "https://raw.githubusercontent.com/IMP735-code/IMP/main/problemas/problema4.png"
+    ];
 
-      function abrirModal(index) {
-        actual = index;
-        modalImg.src = imagenes[actual];
-        modal.classList.add("activo");
-        document.body.style.overflow = "hidden";
+    const grid = document.getElementById("problemasGrid");
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const modalCounter = document.getElementById("modalCounter");
+    const closeBtn = document.querySelector(".modal-close");
+    const prevBtn = document.querySelector(".modal-nav.prev");
+    const nextBtn = document.querySelector(".modal-nav.next");
+
+    let currentIndex = 0;
+
+    // Cargar imágenes en las tarjetas
+    const cards = document.querySelectorAll(".problema-card");
+    cards.forEach((card, index) => {
+      if (problemasRecientes[index]) {
+        const img = document.createElement("img");
+        img.src = problemasRecientes[index];
+        img.alt = `Problema ${index + 1}`;
+        card.innerHTML = "";
+        card.appendChild(img);
       }
 
-      items.forEach((img, i) => {
-        img.addEventListener("click", () => abrirModal(i));
+      card.addEventListener("click", () => {
+        if (problemasRecientes[index]) {
+          openModal(index);
+        }
       });
+    });
 
-      function cerrarModal() {
-        modal.classList.remove("activo");
-        document.body.style.overflow = "";
-      }
+    function openModal(index) {
+      currentIndex = index;
+      modal.classList.add("activo");
+      updateModal();
+      document.body.style.overflow = "hidden";
+    }
 
-      function cambiar(dir) {
-        actual = (actual + dir + imagenes.length) % imagenes.length;
-        modalImg.src = imagenes[actual];
-      }
+    function closeModal() {
+      modal.classList.remove("activo");
+      document.body.style.overflow = "";
+    }
 
-      cerrar.onclick = cerrarModal;
-      prev.onclick = () => cambiar(-1);
-      next.onclick = () => cambiar(1);
+    function updateModal() {
+      modalImg.src = problemasRecientes[currentIndex];
+      modalCounter.textContent = `${currentIndex + 1} / ${problemasRecientes.length}`;
+    }
 
-      modal.onclick = e => {
-        if (e.target === modal) cerrarModal();
-      };
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % problemasRecientes.length;
+      updateModal();
+    }
 
-      document.addEventListener("keydown", e => {
-        if (!modal.classList.contains("activo")) return;
-        if (e.key === "Escape") cerrarModal();
-        if (e.key === "ArrowLeft") cambiar(-1);
-        if (e.key === "ArrowRight") cambiar(1);
-      });
-    </script>
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + problemasRecientes.length) % problemasRecientes.length;
+      updateModal();
+    }
 
+    // Event listeners
+    closeBtn.onclick = closeModal;
+    nextBtn.onclick = nextImage;
+    prevBtn.onclick = prevImage;
 
+    modal.onclick = (e) => {
+      if (e.target === modal) closeModal();
+    };
+
+    document.addEventListener("keydown", (e) => {
+      if (!modal.classList.contains("activo")) return;
+      
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+    });
+
+    // Soporte para gestos táctiles en móvil
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    modalImg.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    modalImg.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      if (touchEndX < touchStartX - 50) nextImage();
+      if (touchEndX > touchStartX + 50) prevImage();
+    }
+  </script>
 </body>
 </html>
