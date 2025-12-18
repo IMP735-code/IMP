@@ -179,34 +179,28 @@
     <img id="modalImg" class="modal-img" src="" alt="Vista previa">
   </div>
 
+  <script src="config.js"></script>
+
   <script>
-    // Configuración de rutas según tu estructura de carpetas
-    const problemas = [
-      "recientes/problema1.png",
-      "recientes/problema2.png",
-      "recientes/problema3.png",
-      "recientes/problema4.png"
-    ];
+      const grid = document.getElementById('gridRecientes');
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modalImg');
 
-    const grid = document.getElementById('gridRecientes');
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modalImg');
+    // Usamos los datos de GALERIA_CONFIG.recientes
+      GALERIA_CONFIG.recientes.forEach((path, index) => {
+          const card = document.createElement('div');
+          card.className = 'card-reciente';
+          card.innerHTML = `<img src="${path}" alt="Problema Reciente ${index + 1}" loading="lazy">`;
+          card.onclick = () => {
+              modalImg.src = path;
+              modal.classList.add('activo');
+          };
+          grid.appendChild(card);
+      });
 
-    // Crear tarjetas dinámicamente
-    problemas.forEach((path, index) => {
-      const card = document.createElement('div');
-      card.className = 'card-reciente';
-      card.innerHTML = `<img src="${path}" alt="Problema ${index + 1}">`;
-      card.onclick = () => {
-        modalImg.src = path;
-        modal.classList.add('activo');
-      };
-      grid.appendChild(card);
-    });
-
-    // Cerrar Modal
-    document.querySelector('.close-modal').onclick = () => modal.classList.remove('activo');
-    modal.onclick = (e) => { if(e.target === modal) modal.classList.remove('activo'); };
+      document.querySelector('.close-modal').onclick = () => modal.classList.remove('activo');
+      modal.onclick = (e) => { if(e.target === modal) modal.classList.remove('activo'); };
   </script>
+  
 </body>
 </html>
