@@ -10,11 +10,13 @@ const GALERIA_CONFIG = {
 
     // Todas estas aparecerán en todos-problemas.html (puedes agregar muchísimas)
     todos: [
-        "todos/problema001.png",
-        "todos/problema002.png",
-        "todos/problema003.png",
-        "todos/problema004.png",
-        "todos/problema005.png",
-        "todos/problema006.png"
+        "todos/problema-1.png",
+        "todos/problema-2.png",
+        "todos/problema-3.png",
+        "todos/problema-4.png",
+        "todos/problema-5.png",
+        "todos/problema-6.png",
+        "todos/problema-7.png",
+        "todos/problema-8.png"
     ]
 };
