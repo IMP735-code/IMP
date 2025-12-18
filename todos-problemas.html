@@ -70,6 +70,7 @@
       overflow: hidden;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
     }
     .item-galeria:hover { 
       transform: translateY(-4px); 
@@ -79,6 +80,25 @@
       width: 100%; 
       height: 100%; 
       object-fit: cover; 
+    }
+    .numero-problema {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(11, 79, 179, 0.9);
+      color: white;
+      font-size: 3rem;
+      font-weight: bold;
+      padding: 1rem 1.5rem;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      pointer-events: none;
     }
 
     /* LIGHTBOX */
@@ -153,11 +173,20 @@
     } else if (GALERIA_CONFIG.todos.length === 0) {
       galleryContainer.innerHTML = '<div class="empty-message">No hay problemas disponibles aún.</div>';
     } else {
+      // Invertir el array para que el más antiguo (primero en config.js) aparezca abajo
+      const imagenesInvertidas = [...GALERIA_CONFIG.todos].reverse();
+      
       // Cargar todas las imágenes desde config.js
-      GALERIA_CONFIG.todos.forEach((path, index) => {
+      imagenesInvertidas.forEach((path, index) => {
+        // Calcular el número real (el más antiguo es 1, el más reciente es el último)
+        const numeroReal = GALERIA_CONFIG.todos.length - index;
+        
         const div = document.createElement('div');
         div.className = 'item-galeria';
-        div.innerHTML = `<img src="${path}" loading="lazy" alt="Problema ${index + 1}">`;
+        div.innerHTML = `
+          <img src="${path}" loading="lazy" alt="Problema ${numeroReal}">
+          <div class="numero-problema">${numeroReal}</div>
+        `;
         
         div.onclick = () => {
           lightboxImg.src = path;
