@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería Completa - IMP</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', system-ui, sans-serif; 
+      background-color: #f8faff; 
+      color: #333;
+      padding-bottom: 2rem;
+    }
+
+    /* Navegación Simple */
+    .nav-back {
+      padding: 1rem;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+    }
+    .btn-regresar {
+      text-decoration: none;
+      color: #0b4fb3;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Título de Galería */
+    .gallery-header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .gallery-header h1 {
+      font-size: 1.8rem;
+      color: #222;
+    }
+
+    /* CUADRICULA MEDIANA (Optimización Móvil) */
+    .gallery-grid {
+      display: grid;
+      /* En móvil: 2 columnas fijas. En desktop: hasta 5 */
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 12px;
+      padding: 0 12px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 600px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .gallery-grid { grid-template-columns: repeat(5, 1fr); }
+    }
+
+    /* Cuadros Medianos */
+    .item-galeria {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      aspect-ratio: 1 / 1; /* Cuadros perfectos */
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.1s;
+    }
+    .item-galeria:active { transform: scale(0.95); } /* Feedback táctil */
+    
+    .item-galeria img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* VISOR PANTALLA COMPLETA (Lightbox) */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+    .lightbox.activo { display: flex; }
+    
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 4px;
+      object-fit: contain;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: 300;
+      cursor: pointer;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav-back">
+    <a href="index.html" class="btn-regresar">← Inicio</a>
+  </nav>
+
+  <header class="gallery-header">
+    <h1>Todos los Problemas</h1>
+  </header>
+
+  <div class="gallery-grid" id="mainGallery">
+    </div>
+
+  <div id="lightbox" class="lightbox">
+    <span class="close-lightbox" id="closeLightbox">&times;</span>
+    <img id="lightboxImg" class="lightbox-img" src="" alt="Vista completa">
+  </div>
+
+  <script>
+    // 1. CONFIGURACIÓN: Lista de imágenes en tu carpeta 'todos/'
+    // Añade aquí los nombres de archivo exactos que tengas en la carpeta
+    const listaProblemas = [
+      "todos/problema001.png",
+      "todos/problema002.png",
+      "todos/problema003.png",
+      "todos/problema004.png",
+      "todos/problema005.png",
+      "todos/problema006.png"
+    ];
+
+    const galleryContainer = document.getElementById('mainGallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeLightbox');
+
+    // 2. GENERACIÓN DINÁMICA
+    listaProblemas.forEach(path => {
+      const div = document.createElement('div');
+      div.className = 'item-galeria';
+      
+      const img = document.createElement('img');
+      img.src = path;
+      img.loading = "lazy"; // Optimización de carga
+      img.alt = "Problema matemático";
+
+      div.appendChild(img);
+      
+      // Evento Click para Pantalla Completa
+      div.onclick = () => {
+        lightboxImg.src = path;
+        lightbox.classList.add('activo');
+        document.body.style.overflow = 'hidden'; // Bloquear scroll
+      };
+
+      galleryContainer.appendChild(div);
+    });
+
+    // 3. CERRAR VISOR
+    const cerrar = () => {
+      lightbox.classList.remove('activo');
+      document.body.style.overflow = 'auto';
+    };
+
+    closeBtn.onclick = cerrar;
+    lightbox.onclick = (e) => { if(e.target === lightbox) cerrar(); };
+  </script>
+</body>
+</html>
