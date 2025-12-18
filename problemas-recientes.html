@@ -2,356 +2,220 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Problemas Recientes | IMP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todos los Problemas - IMP</title>
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(180deg, #f5f7fb, #eef2ff);
-      margin: 0;
-      padding: 1rem;
-    }
-    h1 {
-      text-align: center;
-      color: #d32f2f;
-      margin-bottom: 0.5rem;
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-shadow: 0 2px 4px rgba(211,47,47,0.1);
-    }
-    .subtitle {
-      text-align: center;
-      color: #666;
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
-    }
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .item {
-      position: relative;
-      overflow: hidden;
-      background: white;
-      border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-      cursor: pointer;
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
-                  box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .item:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(211,47,47,0.25);
-    }
-    .item img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      display: block;
-    }
-    .item:hover img {
-      transform: scale(1.15);
-    }
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.75));
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      display: flex;
-      align-items: flex-end;
-      padding: 1.2rem;
-      pointer-events: none;
-    }
-    .item:hover .overlay {
-      opacity: 1;
-    }
-    .overlay p {
-      color: white;
-      font-size: 0.95rem;
-      margin: 0;
-      font-weight: 500;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-    a {
-      display: block;
-      margin: 2rem auto;
-      text-align: center;
-      text-decoration: none;
-      color: #d32f2f;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: #b71c1c;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+      background-color: #f8faff; 
+      color: #333; 
     }
 
-    /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      backdrop-filter: blur(8px);
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      animation: fadeIn 0.3s ease;
-    }
-    .modal.activo {
-      display: flex;
-    }
-    .modal-content {
-      position: relative;
-      max-width: 95%;
-      max-height: 90vh;
+    /* HEADER */
+    .header {
+      background-color: #0b4fb3;
+      padding: 1rem 2rem;
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 1rem;
     }
-    .modal-img {
-      max-width: 100%;
-      max-height: 75vh;
-      border-radius: 16px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-      animation: zoomIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      object-fit: contain;
+    .logo-img { width: 60px; height: auto; }
+    .logo-text { font-size: 2rem; font-weight: bold; color: white; }
+    .back-link {
+      margin-left: auto;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: background-color 0.2s;
     }
-    .modal-texto {
-      color: #fff;
-      margin-top: 1.5rem;
-      font-size: 1.1rem;
+    .back-link:hover { background-color: rgba(255,255,255,0.1); }
+
+    /* TÍTULO */
+    .page-title {
       text-align: center;
-      max-width: 700px;
-      line-height: 1.6;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-      position: absolute;
-      bottom: 80px;
-      left: 50%;
-      transform: translateX(-50%);
+      padding: 3rem 1.5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .modal-nav {
+    .page-title h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #0b4fb3;
+      margin-bottom: 1rem;
+    }
+    .page-title p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    /* GALERÍA */
+    .gallery-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+    #mainGallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .item-galeria {
+      background: white;
+      border: 1.5px solid #333;
+      border-radius: 20px;
+      aspect-ratio: 2/3;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .item-galeria:hover { 
+      transform: translateY(-4px); 
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .item-galeria img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+    }
+    .numero-problema {
       position: absolute;
       top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(10px);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(11, 79, 179, 0.9);
       color: white;
-      border: 2px solid rgba(255,255,255,0.3);
-      width: 50px;
-      height: 50px;
+      font-size: 3rem;
+      font-weight: bold;
+      padding: 1rem 1.5rem;
       border-radius: 50%;
+      width: 80px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      font-size: 1.8rem;
-      transition: all 0.3s ease;
-      user-select: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      pointer-events: none;
     }
-    .modal-nav:hover {
-      background: rgba(255,255,255,0.3);
-      transform: translateY(-50%) scale(1.1);
-    }
-    .modal-nav.prev {
-      left: 20px;
-    }
-    .modal-nav.next {
-      right: 20px;
-    }
-    .cerrar {
-      position: absolute;
-      top: 25px;
-      right: 35px;
-      color: white;
-      font-size: 2.8rem;
-      cursor: pointer;
-      transition: transform 0.2s ease, color 0.2s ease;
-      font-weight: 300;
-      line-height: 1;
-      user-select: none;
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
       z-index: 1000;
+      justify-content: center;
+      align-items: center;
     }
-    .cerrar:hover {
-      transform: scale(1.15) rotate(90deg);
-      color: #ff4444;
+    .lightbox.activo { display: flex; }
+    .lightbox-img { 
+      max-width: 90%; 
+      max-height: 85vh; 
+      border-radius: 10px; 
+      box-shadow: 0 10px 50px rgba(0,0,0,0.5);
     }
-    .modal-counter {
+    .close-lightbox {
       position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 20px;
+      right: 30px;
       color: white;
-      background: rgba(0,0,0,0.6);
-      padding: 0.5rem 1.5rem;
-      border-radius: 25px;
-      font-size: 1rem;
-      backdrop-filter: blur(10px);
+      font-size: 3rem;
+      cursor: pointer;
+      font-weight: 300;
+      transition: transform 0.2s;
     }
+    .close-lightbox:hover { transform: scale(1.1); }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes zoomIn {
-      from { 
-        transform: scale(0.7); 
-        opacity: 0; 
-      }
-      to { 
-        transform: scale(1); 
-        opacity: 1; 
-      }
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-      .galeria {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 1rem;
-      }
-      .item img {
-        height: 180px;
-      }
-      .modal-nav {
-        width: 45px;
-        height: 45px;
-        font-size: 1.5rem;
-      }
-      .modal-nav.prev {
-        left: 10px;
-      }
-      .modal-nav.next {
-        right: 10px;
-      }
-      .cerrar {
-        font-size: 2.2rem;
-        top: 15px;
-        right: 20px;
-      }
+    /* MENSAJE DE VACÍO */
+    .empty-message {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #999;
+      font-size: 1.2rem;
     }
   </style>
 </head>
 <body>
-  <h1>Problemas Recientes</h1>
-  <p class="subtitle">Los problemas más recientes subidos a la plataforma</p>
-  <div class="galeria" id="galeria"></div>
-  <a href="index.html">← Volver al inicio</a>
 
-  <!-- MODAL -->
-  <div id="modal" class="modal">
-    <span class="cerrar">&times;</span>
-    <div class="modal-content">
-      <div class="modal-nav prev">‹</div>
-      <img class="modal-img" id="modalImg" alt="">
-      <div class="modal-nav next">›</div>
-    </div>
-    <p class="modal-texto" id="modalTexto"></p>
-    <div class="modal-counter" id="modalCounter"></div>
+  <header class="header">
+    <img src="logo.png" alt="Logo IMP" class="logo-img">
+    <span class="logo-text">IMP</span>
+    <a href="index.html" class="back-link">← Volver al inicio</a>
+  </header>
+
+  <div class="page-title">
+    <h1>Todos los Problemas</h1>
+    <p>Colección completa de problemas de matemáticas y mecánica</p>
   </div>
 
-  <!-- CARGA DE IMÁGENES -->
-  <script src="imagenes-recientes.js"></script>
+  <div class="gallery-container">
+    <div id="mainGallery"></div>
+  </div>
+
+  <div id="lightbox" class="lightbox">
+    <span id="closeLightbox" class="close-lightbox">&times;</span>
+    <img id="lightboxImg" class="lightbox-img" src="" alt="Vista ampliada">
+  </div>
+
+  <script src="config.js"></script>
   <script>
-    const GITHUB_BASE_URL = "https://raw.githubusercontent.com/IMP735-code/IMP/main/recientes/";
-    
-    const contenedor = document.getElementById("galeria");
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modalImg");
-    const modalTexto = document.getElementById("modalTexto");
-    const modalCounter = document.getElementById("modalCounter");
-    const cerrar = document.querySelector(".cerrar");
-    const prevBtn = document.querySelector(".modal-nav.prev");
-    const nextBtn = document.querySelector(".modal-nav.next");
+    const galleryContainer = document.getElementById('mainGallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
 
-    let currentIndex = 0;
-
-    // Generar galería
-    imagenesRecientes.forEach((img, index) => {
-      const div = document.createElement("div");
-      div.className = "item";
-      const imgURL = GITHUB_BASE_URL + img.archivo;
-      div.innerHTML = `
-        <img src="${imgURL}" alt="${img.texto}">
-        <div class="overlay">
-          <p>${img.texto}</p>
-        </div>
-      `;
+    // Verificar que config.js se cargó correctamente
+    if (typeof GALERIA_CONFIG === 'undefined' || !GALERIA_CONFIG.todos) {
+      galleryContainer.innerHTML = '<div class="empty-message">Error: No se pudo cargar la configuración de imágenes.</div>';
+    } else if (GALERIA_CONFIG.todos.length === 0) {
+      galleryContainer.innerHTML = '<div class="empty-message">No hay problemas disponibles aún.</div>';
+    } else {
+      // Invertir el array para que el más antiguo (primero en config.js) aparezca abajo
+      const imagenesInvertidas = [...GALERIA_CONFIG.todos].reverse();
       
-      div.addEventListener("click", () => {
-        openModal(index);
+      // Cargar todas las imágenes desde config.js
+      imagenesInvertidas.forEach((path, index) => {
+        // Calcular el número real (el más antiguo es 1, el más reciente es el último)
+        const numeroReal = GALERIA_CONFIG.todos.length - index;
+        
+        const div = document.createElement('div');
+        div.className = 'item-galeria';
+        div.innerHTML = `
+          <img src="${path}" loading="lazy" alt="Problema ${numeroReal}">
+          <div class="numero-problema">${numeroReal}</div>
+        `;
+        
+        div.onclick = () => {
+          lightboxImg.src = path;
+          lightbox.classList.add('activo');
+          document.body.style.overflow = 'hidden';
+        };
+        
+        galleryContainer.appendChild(div);
       });
-      
-      contenedor.appendChild(div);
-    });
-
-    function openModal(index) {
-      currentIndex = index;
-      modal.classList.add("activo");
-      updateModal();
-      document.body.style.overflow = "hidden";
     }
 
-    function cerrarModal() {
-      modal.classList.remove("activo");
-      document.body.style.overflow = "";
-    }
-
-    function updateModal() {
-      const imgURL = GITHUB_BASE_URL + imagenesRecientes[currentIndex].archivo;
-      modalImg.src = imgURL;
-      modalImg.alt = imagenesRecientes[currentIndex].texto;
-      modalTexto.textContent = imagenesRecientes[currentIndex].texto;
-      modalCounter.textContent = `${currentIndex + 1} / ${imagenesRecientes.length}`;
-    }
-
-    function nextImage() {
-      currentIndex = (currentIndex + 1) % imagenesRecientes.length;
-      updateModal();
-    }
-
-    function prevImage() {
-      currentIndex = (currentIndex - 1 + imagenesRecientes.length) % imagenesRecientes.length;
-      updateModal();
-    }
-
-    cerrar.onclick = cerrarModal;
-    nextBtn.onclick = nextImage;
-    prevBtn.onclick = prevImage;
-
-    modal.onclick = (e) => {
-      if (e.target === modal) cerrarModal();
+    // Funciones del lightbox
+    const cerrar = () => {
+      lightbox.classList.remove('activo');
+      document.body.style.overflow = 'auto';
     };
 
-    document.addEventListener("keydown", (e) => {
-      if (!modal.classList.contains("activo")) return;
-      if (e.key === "Escape") cerrarModal();
-      if (e.key === "ArrowRight") nextImage();
-      if (e.key === "ArrowLeft") prevImage();
-    });
+    document.getElementById('closeLightbox').onclick = cerrar;
+    lightbox.onclick = (e) => { 
+      if(e.target === lightbox) cerrar(); 
+    };
 
-    // Gestos táctiles
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    modalImg.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
-
-    modalImg.addEventListener("touchend", (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      if (touchEndX < touchStartX - 50) nextImage();
-      if (touchEndX > touchStartX + 50) prevImage();
+    // Cerrar con tecla ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('activo')) {
+        cerrar();
+      }
     });
   </script>
+  
 </body>
 </html>
