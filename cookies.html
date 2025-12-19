@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Cookies | IMP</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+      background-color: #f8faff; 
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .header {
+      background-color: #0b4fb3;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .logo-img { width: 60px; height: auto; }
+    .logo-text { 
+      font-size: 2rem; 
+      font-weight: bold; 
+      color: white; 
+      flex: 1;
+    }
+    .btn-volver {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    .btn-volver:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 3px solid #0b4fb3;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      color: #0b4fb3;
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+    }
+
+    .page-header .fecha {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .content {
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .content h2 {
+      color: #0b4fb3;
+      font-size: 1.6rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .content h2:first-child {
+      margin-top: 0;
+    }
+
+    .content h3 {
+      color: #333;
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .content p {
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .content ul {
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .content li {
+      margin-bottom: 0.5rem;
+      color: #555;
+    }
+
+    .content a {
+      color: #0b4fb3;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .content a:hover {
+      text-decoration: underline;
+    }
+
+    .highlight-box {
+      background: #e3f2fd;
+      border-left: 4px solid #0b4fb3;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+    }
+
+    .highlight-box strong {
+      color: #0b4fb3;
+    }
+
+    .warning-box {
+      background: #fff3e0;
+      border-left: 4px solid #ff9800;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+    }
+
+    .warning-box strong {
+      color: #e65100;
+    }
+
+    .cookie-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+      display: block;
+    }
+
+    .cookie-table table {
+      width: 100%;
+      border: 2px solid #e0e0e0;
+    }
+
+    .cookie-table th {
+      background: #0b4fb3;
+      color: white;
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .cookie-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .cookie-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .cookie-table tr:nth-child(even) {
+      background: #f8faff;
+    }
+
+    .button-link {
+      display: inline-block;
+      background: linear-gradient(135deg, #0b4fb3 0%, #0d5ec7 100%);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(11,79,179,0.3);
+      margin: 1rem 0;
+    }
+
+    .button-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(11,79,179,0.4);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        padding: 1.5rem;
+      }
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      .cookie-table {
+        font-size: 0.9rem;
+      }
+      .cookie-table th,
+      .cookie-table td {
+        padding: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <img src="logo.png" alt="Logo IMP" class="logo-img">
+    <span class="logo-text">IMP</span>
+    <a href="index.html" class="btn-volver">← Volver al inicio</a>
+  </header>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>Política de Cookies</h1>
+      <p class="fecha">Última actualización: Diciembre 2024</p>
+    </div>
+
+    <div class="content">
+      <div class="highlight-box">
+        <p><strong>🍪 Información importante:</strong> Este sitio web utiliza cookies propias y de terceros para mejorar su experiencia de navegación y mostrar publicidad relevante. Al continuar navegando, usted acepta el uso de cookies según se describe en esta política.</p>
+      </div>
+
+      <h2>1. ¿Qué son las Cookies?</h2>
+      <p>Las cookies son pequeños archivos de texto que se almacenan en su dispositivo (computadora, tablet o móvil) cuando visita un sitio web. Las cookies permiten que el sitio web reconozca su dispositivo y recuerde información sobre su visita, como sus preferencias de idioma y otras configuraciones.</p>
+      
+      <p>Las cookies son ampliamente utilizadas para hacer que los sitios web funcionen de manera más eficiente, así como para proporcionar información a los propietarios del sitio sobre cómo los usuarios interactúan con él.</p>
+
+      <h2>2. ¿Cómo Utilizamos las Cookies?</h2>
+      <p>En IMP - Plataforma Educativa Visual, utilizamos cookies para:</p>
+      <ul>
+        <li>Recordar sus preferencias y configuraciones</li>
+        <li>Entender cómo utiliza nuestro sitio web</li>
+        <li>Mejorar la experiencia del usuario</li>
+        <li>Analizar el tráfico y el rendimiento del sitio</li>
+        <li>Mostrar publicidad relevante a través de Google AdSense</li>
+        <li>Personalizar el contenido según sus intereses</li>
+      </ul>
+
+      <h2>3. Tipos de Cookies que Utilizamos</h2>
+
+      <h3>3.1 Cookies Esenciales</h3>
+      <p>Estas cookies son necesarias para que el sitio web funcione correctamente y no se pueden desactivar en nuestros sistemas. Generalmente solo se establecen en respuesta a acciones realizadas por usted, como establecer sus preferencias de privacidad, iniciar sesión o completar formularios.</p>
+
+      <h3>3.2 Cookies de Rendimiento y Análisis</h3>
+      <p>Estas cookies nos permiten contar las visitas y fuentes de tráfico para poder medir y mejorar el rendimiento de nuestro sitio. Nos ayudan a saber qué páginas son las más y las menos populares, y a ver cómo se mueven los visitantes por el sitio.</p>
+
+      <div class="warning-box">
+        <p><strong>Google Analytics:</strong> Utilizamos Google Analytics para analizar el uso del sitio web. Google Analytics recopila información de forma anónima sobre cómo los visitantes utilizan nuestro sitio.</p>
+      </div>
+
+      <h3>3.3 Cookies de Publicidad</h3>
+      <p>Estas cookies pueden ser establecidas a través de nuestro sitio por nuestros socios publicitarios (principalmente Google AdSense). Pueden ser utilizadas por esas empresas para crear un perfil de sus intereses y mostrarle anuncios relevantes en otros sitios.</p>
+
+      <div class="highlight-box">
+        <p><strong>Google AdSense:</strong> Utilizamos Google AdSense para mostrar anuncios en nuestro sitio web. Google utiliza cookies para personalizar los anuncios que se muestran en los sitios de sus socios, como sitios web que muestran anuncios de Google o que participan en redes publicitarias certificadas por Google.</p>
+      </div>
+
+      <h2>4. Cookies Específicas que Utilizamos</h2>
+      
+      <div class="cookie-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Cookie</th>
+              <th>Proveedor</th>
+              <th>Propósito</th>
+              <th>Duración</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>_ga</strong></td>
+              <td>Google Analytics</td>
+              <td>Distinguir usuarios únicos mediante la asignación de un número generado aleatoriamente</td>
+              <td>2 años</td>
+            </tr>
+            <tr>
+              <td><strong>_gid</strong></td>
+              <td>Google Analytics</td>
+              <td>Distinguir usuarios únicos</td>
+              <td>24 horas</td>
+            </tr>
+            <tr>
+              <td><strong>_gat</strong></td>
+              <td>Google Analytics</td>
+              <td>Limitar la tasa de solicitudes</td>
+              <td>1 minuto</td>
+            </tr>
+            <tr>
+              <td><strong>IDE</strong></td>
+              <td>Google DoubleClick</td>
+              <td>Usado por Google AdSense para experimentar con la eficacia publicitaria en sitios web</td>
+              <td>1 año</td>
+            </tr>
+            <tr>
+              <td><strong>NID</strong></td>
+              <td>Google</td>
+              <td>Contiene un ID único que Google utiliza para recordar sus preferencias</td>
+              <td>6 meses</td>
+            </tr>
+            <tr>
+              <td><strong>DSID</strong></td>
+              <td>Google</td>
+              <td>Identificar a los visitantes por edad, género e intereses para Google Analytics</td>
+              <td>2 semanas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>5. Cookies de Terceros</h2>
+      <p>Además de nuestras propias cookies, también utilizamos cookies de terceros para:</p>
+      
+      <h3>5.1 Google AdSense</h3>
+      <p>Google AdSense utiliza cookies para:</p>
+      <ul>
+        <li>Mostrar anuncios basados en las visitas previas de un usuario a este u otros sitios web</li>
+        <li>Personalizar anuncios según los intereses del usuario</li>
+        <li>Medir la efectividad de las campañas publicitarias</li>
+        <li>Limitar el número de veces que se muestra un anuncio a un usuario</li>
+        <li>Silenciar anuncios que el usuario no desea ver</li>
+      </ul>
+
+      <h3>5.2 Google Analytics</h3>
+      <p>Google Analytics es un servicio de análisis web proporcionado por Google que rastrea e informa sobre el tráfico del sitio web. Utilizamos esta información para:</p>
+      <ul>
+        <li>Comprender cómo los visitantes interactúan con nuestro sitio</li>
+        <li>Identificar qué contenido es más popular</li>
+        <li>Mejorar la experiencia del usuario</li>
+        <li>Optimizar nuestros recursos educativos</li>
+      </ul>
+
+      <h2>6. Cookies de Redes Sociales</h2>
+      <p>Si compartimos enlaces a redes sociales (como Facebook, Twitter, YouTube), estas plataformas pueden establecer cookies en su dispositivo cuando interactúa con sus botones o widgets. IMP no controla estas cookies de terceros, por lo que le recomendamos revisar las políticas de privacidad de estas redes sociales.</p>
+
+      <h2>7. Cómo Gestionar y Desactivar las Cookies</h2>
+      
+      <h3>7.1 Configuración del navegador</h3>
+      <p>La mayoría de los navegadores web permiten gestionar las preferencias de cookies. Puede configurar su navegador para rechazar cookies o para que le avise cuando un sitio web intenta colocar una cookie en su dispositivo.</p>
+
+      <p><strong>Instrucciones para navegadores populares:</strong></p>
+      <ul>
+        <li><strong>Google Chrome:</strong> Configuración → Privacidad y seguridad → Cookies y otros datos de sitios</li>
+        <li><strong>Mozilla Firefox:</strong> Opciones → Privacidad y seguridad → Cookies y datos del sitio</li>
+        <li><strong>Safari:</strong> Preferencias → Privacidad → Cookies y datos de sitios web</li>
+        <li><strong>Microsoft Edge:</strong> Configuración → Cookies y permisos del sitio → Cookies</li>
+      </ul>
+
+      <h3>7.2 Desactivar cookies de Google AdSense</h3>
+      <p>Puede optar por no participar en la publicidad personalizada de Google visitando:</p>
+      <ul>
+        <li><a href="https://www.google.com/settings/ads" target="_blank">Configuración de anuncios de Google</a></li>
+        <li><a href="https://adssettings.google.com/" target="_blank">Configuración de anuncios de Google (AdSettings)</a></li>
+        <li><a href="http://www.aboutads.info/choices/" target="_blank">Network Advertising Initiative</a></li>
+      </ul>
+
+      <a href="https://www.google.com/settings/ads" target="_blank" class="button-link">
+        Configurar Anuncios de Google →
+      </a>
+
+      <h3>7.3 Herramientas de exclusión voluntaria</h3>
+      <p>También puede usar herramientas de exclusión voluntaria de terceros:</p>
+      <ul>
+        <li><a href="https://optout.aboutads.info/" target="_blank">Digital Advertising Alliance (DAA)</a></li>
+        <li><a href="https://www.youronlinechoices.com/" target="_blank">Your Online Choices (Europa)</a></li>
+        <li><a href="https://tools.google.com/dlpage/gaoptout" target="_blank">Complemento de inhabilitación de Google Analytics</a></li>
+      </ul>
+
+      <div class="warning-box">
+        <p><strong>⚠️ Importante:</strong> Si desactiva todas las cookies, algunas funciones de nuestro sitio web podrían no funcionar correctamente. Las cookies esenciales son necesarias para el funcionamiento básico del sitio.</p>
+      </div>
+
+      <h2>8. Cookies en Dispositivos Móviles</h2>
+      <p>Si accede a nuestro sitio web desde un dispositivo móvil, también puede controlar las cookies a través de la configuración de su navegador móvil. Además, puede:</p>
+      <ul>
+        <li><strong>iOS:</strong> Configuración → Safari → Privacidad y seguridad</li>
+        <li><strong>Android:</strong> Configuración → Privacidad → Borrar datos de navegación</li>
+      </ul>
+
+      <h2>9. Duración de las Cookies</h2>
+      <p>Utilizamos dos tipos de cookies según su duración:</p>
+      
+      <h3>9.1 Cookies de sesión</h3>
+      <p>Estas cookies son temporales y se eliminan cuando cierra su navegador. Se utilizan para funciones esenciales del sitio.</p>
+
+      <h3>9.2 Cookies persistentes</h3>
+      <p>Estas cookies permanecen en su dispositivo durante un período de tiempo específico o hasta que las elimine manualmente. Se utilizan para recordar sus preferencias y para análisis.</p>
+
+      <h2>10. Actualizaciones de Cookies</h2>
+      <p>Podemos actualizar el tipo de cookies que utilizamos ocasionalmente. Cuando lo hagamos, actualizaremos esta Política de Cookies y la fecha de "Última actualización" en la parte superior de esta página.</p>
+
+      <h2>11. Consentimiento y Aceptación</h2>
+      <p>Al utilizar nuestro sitio web, usted acepta el uso de cookies según lo descrito en esta Política de Cookies. Si continúa navegando sin cambiar la configuración de su navegador, asumimos que acepta recibir todas las cookies de este sitio web.</p>
+
+      <p>Si no está de acuerdo con el uso de cookies, puede:</p>
+      <ul>
+        <li>Modificar la configuración de su navegador para bloquear cookies</li>
+        <li>Abandonar el sitio web</li>
+        <li>Utilizar herramientas de exclusión voluntaria mencionadas anteriormente</li>
+      </ul>
+
+      <h2>12. Más Información</h2>
+      <p>Para obtener más información sobre cómo protegemos su privacidad, consulte nuestra <a href="privacidad.html">Política de Privacidad</a>.</p>
+
+      <p>Si tiene preguntas sobre esta Política de Cookies, puede contactarnos a través de:</p>
+      <ul>
+        <li>Página de contacto: <a href="contacto.html">Formulario de contacto</a></li>
+        <li>Correo electrónico: contacto@imp-educacion.com</li>
+      </ul>
+
+      <h2>13. Enlaces Útiles</h2>
+      <p>Para obtener más información sobre cookies y cómo gestionarlas:</p>
+      <ul>
+        <li><a href="https://www.allaboutcookies.org/" target="_blank">All About Cookies</a></li>
+        <li><a href="https://www.aboutcookies.org/" target="_blank">About Cookies</a></li>
+        <li><a href="https://policies.google.com/technologies/cookies" target="_blank">Información sobre cookies de Google</a></li>
+        <li><a href="https://support.google.com/adsense/answer/7549925" target="_blank">Cookies de Google AdSense</a></li>
+      </ul>
+
+      <div class="highlight-box" style="margin-top: 3rem;">
+        <p><strong>✓ Resumen:</strong> Utilizamos cookies para mejorar su experiencia de navegación, analizar el tráfico del sitio y mostrar publicidad relevante a través de Google AdSense. Puede gestionar sus preferencias de cookies en cualquier momento a través de la configuración de su navegador.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
