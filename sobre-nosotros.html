@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nosotros | IMP</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+      background-color: #f8faff; 
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .header {
+      background-color: #0b4fb3;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .logo-img { width: 60px; height: auto; }
+    .logo-text { 
+      font-size: 2rem; 
+      font-weight: bold; 
+      color: white; 
+      flex: 1;
+    }
+    .btn-volver {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    .btn-volver:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .hero-section {
+      text-align: center;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      color: #0b4fb3;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .hero-section .subtitle {
+      font-size: 1.3rem;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .content-card {
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+    }
+
+    .content-card h2 {
+      color: #0b4fb3;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .content-card h2::before {
+      content: '';
+      width: 4px;
+      height: 1.8rem;
+      background: #0b4fb3;
+      border-radius: 2px;
+    }
+
+    .content-card p {
+      margin-bottom: 1.2rem;
+      color: #555;
+      font-size: 1.05rem;
+    }
+
+    .content-card ul {
+      margin-left: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .content-card li {
+      margin-bottom: 0.8rem;
+      color: #555;
+      font-size: 1.05rem;
+    }
+
+    .content-card a {
+      color: #0b4fb3;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .content-card a:hover {
+      text-decoration: underline;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .value-item {
+      background: linear-gradient(135deg, #e3f2fd 0%, #f8faff 100%);
+      padding: 2rem;
+      border-radius: 15px;
+      border-left: 4px solid #0b4fb3;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .value-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(11,79,179,0.15);
+    }
+
+    .value-item h3 {
+      color: #0b4fb3;
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+    }
+
+    .value-item p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #0b4fb3 0%, #0d5ec7 100%);
+      color: white;
+      padding: 3rem;
+      border-radius: 20px;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: white;
+      color: #0b4fb3;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0b4fb3;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: #666;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 2.2rem;
+      }
+      .content-card {
+        padding: 2rem;
+      }
+      .cta-section {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <img src="logo.png" alt="Logo IMP" class="logo-img">
+    <span class="logo-text">IMP</span>
+    <a href="index.html" class="btn-volver">← Volver al inicio</a>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <h1>Sobre Nosotros</h1>
+      <p class="subtitle">Transformando la educación matemática a través de la visualización</p>
+    </div>
+
+    <div class="content-card">
+      <h2>Nuestra Historia</h2>
+      <p>IMP (Plataforma Educativa Visual) nació de una pasión profunda por las matemáticas y el deseo de hacer que conceptos complejos sean accesibles para todos. Fundada en 2024, nuestra plataforma surge de la experiencia directa en la enseñanza de matemáticas y mecánica, donde identificamos una necesidad crítica: los estudiantes aprenden mejor cuando pueden visualizar los conceptos.</p>
+      <p>Lo que comenzó como una pequeña colección de problemas resueltos se ha convertido en una plataforma educativa integral que sirve a estudiantes de diversos niveles académicos, desde secundaria hasta educación superior.</p>
+    </div>
+
+    <div class="content-card">
+      <h2>Nuestra Misión</h2>
+      <p>Democratizar el acceso a una educación matemática de calidad mediante recursos visuales que simplifiquen conceptos complejos y fomenten el aprendizaje autónomo. Creemos que cada estudiante merece acceso a herramientas educativas efectivas, independientemente de su ubicación o recursos económicos.</p>
+      
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Problemas Resueltos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Acceso Gratuito</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Posibilidades de Aprendizaje</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h2>Nuestra Visión</h2>
+      <p>Aspiramos a ser la plataforma educativa visual de referencia en Latinoamérica para el aprendizaje de matemáticas y mecánica. Visualizamos un futuro donde:</p>
+      <ul>
+        <li>Todo estudiante pueda acceder a explicaciones visuales claras de conceptos matemáticos complejos</li>
+        <li>Los educadores cuenten con recursos de calidad para complementar su enseñanza</li>
+        <li>El aprendizaje de matemáticas sea intuitivo, accesible y, sobre todo, efectivo</li>
+        <li>Las barreras económicas no limiten el acceso a una educación de calidad</li>
+      </ul>
+    </div>
+
+    <div class="content-card">
+      <h2>Nuestros Valores</h2>
+      <div class="values-grid">
+        <div class="value-item">
+          <h3>🎯 Excelencia</h3>
+          <p>Nos comprometemos a proporcionar contenido de la más alta calidad, verificado y actualizado constantemente.</p>
+        </div>
+        <div class="value-item">
+          <h3>🌟 Accesibilidad</h3>
+          <p>Creemos que la educación es un derecho. Todos nuestros recursos son gratuitos y accesibles para cualquier persona con conexión a internet.</p>
+        </div>
+        <div class="value-item">
+          <h3>💡 Innovación</h3>
+          <p>Adoptamos métodos visuales y tecnología moderna para hacer el aprendizaje más efectivo e intuitivo.</p>
+        </div>
+        <div class="value-item">
+          <h3>🤝 Comunidad</h3>
+          <p>Fomentamos un ambiente de aprendizaje colaborativo donde estudiantes y educadores puedan crecer juntos.</p>
+        </div>
+        <div class="value-item">
+          <h3>📚 Rigor Académico</h3>
+          <p>Mantenemos estándares académicos elevados en todo nuestro contenido, asegurando precisión y profundidad.</p>
+        </div>
+        <div class="value-item">
+          <h3>🔄 Mejora Continua</h3>
+          <p>Escuchamos a nuestra comunidad y evolucionamos constantemente para satisfacer mejor sus necesidades educativas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h2>Qué Ofrecemos</h2>
+      <p>En IMP, proporcionamos:</p>
+      <ul>
+        <li><strong>Problemas Resueltos Visualmente:</strong> Cientos de problemas de matemáticas y mecánica con soluciones detalladas y visuales</li>
+        <li><strong>Análisis Paso a Paso:</strong> Cada problema incluye explicaciones detalladas de cada paso del proceso de solución</li>
+        <li><strong>Categorización por Temas:</strong> Contenido organizado por áreas temáticas para facilitar el estudio dirigido</li>
+        <li><strong>Acceso Universal:</strong> Plataforma optimizada para computadoras, tabletas y móviles</li>
+        <li><strong>Actualización Constante:</strong> Agregamos nuevos problemas y recursos regularmente</li>
+        <li><strong>Material de Referencia:</strong> Recursos complementarios para profundizar en conceptos específicos</li>
+      </ul>
+    </div>
+
+    <div class="content-card">
+      <h2>Para Quién Es IMP</h2>
+      <p>Nuestra plataforma está diseñada para:</p>
+      <ul>
+        <li><strong>Estudiantes de Secundaria:</strong> Refuerzo en álgebra, geometría y trigonometría</li>
+        <li><strong>Estudiantes Universitarios:</strong> Apoyo en cálculo, análisis matemático y mecánica</li>
+        <li><strong>Educadores:</strong> Recursos complementarios para sus clases</li>
+        <li><strong>Autodidactas:</strong> Personas que desean aprender o repasar conceptos matemáticos por cuenta propia</li>
+        <li><strong>Preparación de Exámenes:</strong> Estudiantes que se preparan para exámenes de admisión o certificaciones</li>
+      </ul>
+    </div>
+
+    <div class="cta-section">
+      <h2>Únete a Nuestra Comunidad Educativa</h2>
+      <p>Comienza tu viaje de aprendizaje hoy mismo. Explora nuestros recursos, practica con problemas desafiantes y descubre cómo las matemáticas cobran vida a través de la visualización.</p>
+      <a href="index.html" class="cta-button">Explorar Problemas</a>
+    </div>
+
+    <div class="content-card">
+      <h2>Contacto</h2>
+      <p>¿Tienes preguntas, sugerencias o comentarios? Nos encantaría escucharte. Tu retroalimentación nos ayuda a mejorar y expandir nuestros servicios educativos.</p>
+      <p>Puedes contactarnos a través de nuestra <a href="contacto.html">página de contacto</a> o enviarnos un correo directamente.</p>
+      <p style="margin-top: 2rem; font-style: italic; color: #666;">
+        "Las matemáticas son el único juego humano infinito; no se trata de ganar, sino de mantener el juego vivo." — Paul Erdős
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
