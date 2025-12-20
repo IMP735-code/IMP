@@ -2,10 +2,10 @@
 const GALERIA_CONFIG = {
     // Estas 4 imágenes aparecerán en la sección "Problemas recientes" del index.html
     recientes: [
+        "recientes/problema-17.png",
+        "recientes/problema-16.png",
         "recientes/problema-15.png",
-        "recientes/problema-14.png",
-        "recientes/problema-13.png",
-        "recientes/problema-12.png"
+        "recientes/problema-14.png"
     ],
 
     // Todas estas aparecerán en todos-problemas.html (puedes agregar muchísimas)
@@ -20,7 +20,9 @@ const GALERIA_CONFIG = {
         "todos/problema-8.png",
         "todos/problema-9.png",
         "todos/problema-10.png",
-        "todos/problema-11.png"
+        "todos/problema-11.png",
+        "todos/problema-12.png",
+        "todos/problema-13.png"
     ],
 
     seccion2: [
