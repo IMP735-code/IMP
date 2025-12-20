@@ -25,11 +25,11 @@ const GALERIA_CONFIG = {
 
     seccion2: [
         {
-            imagen: "seccion-2/problema-1.png",
-            titulo: "Derivada de funciones compuestas",
-            descripcion: "Aplicación de la regla de la cadena para encontrar la derivada de funciones compuestas. Se requiere identificar correctamente las funciones internas y externas, luego aplicar la regla multiplicando las derivadas correspondientes.",
+            imagen: "seccion2/problema-1.png",
+            titulo: "Ecuaciones exponenciales y logarítmicas",
+            descripcion: "Se realiza un cambio de variable, para transformar la ecuación exponencial en una ecuación cuadrática. Luego se factoriza, se resuelve para “a” y finalmente se aplica logaritmo natural para despejar “x” en cada caso.",
             nivel: "Intermedio",
-            tiempo: "12 min"
+            tiempo: "11 min"
         },
         {
             imagen: "seccion-2/problema-2.png",
