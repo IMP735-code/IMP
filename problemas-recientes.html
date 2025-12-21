@@ -1,392 +1,244 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Problemas Recientes | IMP</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(180deg, #f5f7fb, #eef2ff);
-      margin: 0;
-      padding: 1rem;
-    }
-    h1 {
-      text-align: center;
-      color: #d32f2f;
-      margin-bottom: 0.5rem;
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-shadow: 0 2px 4px rgba(211,47,47,0.1);
-    }
-    .subtitle {
-      text-align: center;
-      color: #666;
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
-    }
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .item {
-      position: relative;
-      overflow: hidden;
-      background: #050b1a;
-      border-radius: 16px;
-      cursor: pointer;
-      border: 2px solid #00e5ff;
-      box-shadow:
-        0 0 12px rgba(0,229,255,0.6),
-        0 0 25px rgba(0,229,255,0.4);
-      transition: 
-        transform 0.35s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease;
-    }
+<meta charset="UTF-8">
+<title>Problemas Recientes | IMP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .item:hover {
-      transform: translateY(-8px) scale(1.03);
-      border-color: #ff1744;
-      box-shadow:
-        0 0 18px rgba(255,23,68,0.8),
-        0 0 40px rgba(255,23,68,0.6);
-    }
+<style>
+body{
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg,#f5f7fb,#eef2ff);
+  margin:0;
+  padding:1rem;
+}
+h1{
+  text-align:center;
+  color:#d32f2f;
+  font-size:2.5rem;
+}
+.subtitle{
+  text-align:center;
+  color:#666;
+  margin-bottom:2rem;
+}
+.galeria{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1.5rem;
+  max-width:1200px;
+  margin:auto;
+}
+.item{
+  background:#050b1a;
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  border:2px solid #00e5ff;
+  box-shadow:0 0 12px rgba(0,229,255,.6);
+  transition:.3s;
+}
+.item:hover{
+  transform:translateY(-8px) scale(1.03);
+  border-color:#ff1744;
+}
+.item img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  transition:.5s;
+}
+.item:hover img{
+  transform:scale(1.15);
+}
+a{
+  display:block;
+  text-align:center;
+  margin:2rem;
+  text-decoration:none;
+  color:#d32f2f;
+  font-weight:600;
+}
 
-    .item img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      filter: brightness(0.95);
-      transition: transform 0.5s ease, filter 0.5s ease;
-    }
-
-    .item:hover img {
-      transform: scale(1.15);
-      filter: brightness(1.1);
-    }
-
-
-    }
-    .overlay p {
-      color: white;
-      font-size: 0.95rem;
-      margin: 0;
-      font-weight: 500;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-    a {
-      display: block;
-      margin: 2rem auto;
-      text-align: center;
-      text-decoration: none;
-      color: #d32f2f;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: #b71c1c;
-    }
-
-    /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      backdrop-filter: blur(8px);
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      animation: fadeIn 0.3s ease;
-    }
-    .modal.activo {
-      display: flex;
-    }
-    .modal-content {
-      position: relative;
-      max-width: 95%;
-      max-height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-img {
-      max-width: 100%;
-      max-height: 75vh;
-      border-radius: 16px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-      animation: zoomIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      object-fit: contain;
-    }
-    .modal-texto {
-      color: #fff;
-      margin-top: 1.5rem;
-      font-size: 1.1rem;
-      text-align: center;
-      max-width: 700px;
-      line-height: 1.6;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-      position: absolute;
-      bottom: 80px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .modal-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(10px);
-      color: white;
-      border: 2px solid rgba(255,255,255,0.3);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1.8rem;
-      transition: all 0.3s ease;
-      user-select: none;
-    }
-    .modal-nav:hover {
-      background: rgba(255,255,255,0.3);
-      transform: translateY(-50%) scale(1.1);
-    }
-    .modal-nav.prev {
-      left: 20px;
-    }
-    .modal-nav.next {
-      right: 20px;
-    }
-    .cerrar {
-      position: absolute;
-      top: 25px;
-      right: 35px;
-      color: white;
-      font-size: 2.8rem;
-      cursor: pointer;
-      transition: transform 0.2s ease, color 0.2s ease;
-      font-weight: 300;
-      line-height: 1;
-      user-select: none;
-      z-index: 1000;
-    }
-    .cerrar:hover {
-      transform: scale(1.15) rotate(90deg);
-      color: #ff4444;
-    }
-    .modal-counter {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      background: rgba(0,0,0,0.6);
-      padding: 0.5rem 1.5rem;
-      border-radius: 25px;
-      font-size: 1rem;
-      backdrop-filter: blur(10px);
-    }
-    .modal-img {
-      cursor: zoom-in;
-    }
-
-    .modal.fullscreen .modal-img {
-      cursor: zoom-out;
-    }
-
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes zoomIn {
-      from { 
-        transform: scale(0.7); 
-        opacity: 0; 
-      }
-      to { 
-        transform: scale(1); 
-        opacity: 1; 
-      }
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-      .galeria {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 1rem;
-      }
-      .item img {
-        height: 180px;
-      }
-      .modal-nav {
-        width: 45px;
-        height: 45px;
-        font-size: 1.5rem;
-      }
-      .modal-nav.prev {
-        left: 10px;
-      }
-      .modal-nav.next {
-        right: 10px;
-      }
-      .cerrar {
-        font-size: 2.2rem;
-        top: 15px;
-        right: 20px;
-      }
-    }
-  </style>
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.92);
+  backdrop-filter:blur(8px);
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.modal.activo{display:flex}
+.modal-content{
+  position:relative;
+  max-width:95%;
+}
+.modal-img{
+  max-height:75vh;
+  max-width:100%;
+  border-radius:16px;
+  cursor:zoom-in;
+}
+.modal.fullscreen .modal-img{
+  cursor:zoom-out;
+}
+.cerrar{
+  position:absolute;
+  top:20px;
+  right:30px;
+  color:white;
+  font-size:2.8rem;
+  cursor:pointer;
+}
+.modal-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  color:white;
+  font-size:2rem;
+  cursor:pointer;
+  padding:10px;
+}
+.modal-nav.prev{left:20px}
+.modal-nav.next{right:20px}
+.modal-texto{
+  color:white;
+  text-align:center;
+  margin-top:1rem;
+}
+.modal-counter{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  color:white;
+  background:rgba(0,0,0,.6);
+  padding:.4rem 1rem;
+  border-radius:20px;
+}
+</style>
 </head>
-<body>
-  <h1>Problemas Recientes</h1>
-  <p class="subtitle">Los problemas más recientes subidos a la plataforma</p>
-  <div class="galeria" id="galeria"></div>
-  <a href="index.html">← Volver al inicio</a>
 
-  <!-- MODAL -->
-  <div id="modal" class="modal">
-    <span class="cerrar">&times;</span>
-    <div class="modal-content">
-      <div class="modal-nav prev">‹</div>
-      <img class="modal-img" id="modalImg" alt="">
-      <div class="modal-nav next">›</div>
-    </div>
-    <p class="modal-texto" id="modalTexto"></p>
+<body>
+
+<h1>Problemas Recientes</h1>
+<p class="subtitle">Los problemas más recientes subidos a la plataforma</p>
+
+<div class="galeria" id="galeria"></div>
+<a href="index.html">← Volver al inicio</a>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <span class="cerrar">&times;</span>
+  <div class="modal-content">
+    <div class="modal-nav prev">‹</div>
+    <img id="modalImg" class="modal-img">
+    <div class="modal-nav next">›</div>
     <div class="modal-counter" id="modalCounter"></div>
   </div>
+  <p class="modal-texto" id="modalTexto"></p>
+</div>
 
-  <!-- CARGA DE IMÁGENES -->
-  <script src="imagenes-recientes.js"></script>
-  <script>
-    const GITHUB_BASE_URL = "https://raw.githubusercontent.com/IMP735-code/IMP/main/recientes/";
-    
-    const contenedor = document.getElementById("galeria");
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modalImg");
-    const modalTexto = document.getElementById("modalTexto");
-    const modalCounter = document.getElementById("modalCounter");
-    const cerrar = document.querySelector(".cerrar");
-    const prevBtn = document.querySelector(".modal-nav.prev");
-    const nextBtn = document.querySelector(".modal-nav.next");
+<script>
+/* ===== IMÁGENES ===== */
+const imagenesRecientes = [
+  {archivo:"img1.png",texto:"Problema 1"},
+  {archivo:"img2.png",texto:"Problema 2"},
+  {archivo:"img3.png",texto:"Problema 3"},
+  {archivo:"img4.png",texto:"Problema 4"}
+];
 
-    let currentIndex = 0;
+const BASE_URL = "https://raw.githubusercontent.com/IMP735-code/IMP/main/recientes/";
 
-    // Generar galería
-    imagenesRecientes.forEach((img, index) => {
-      const div = document.createElement("div");
-      div.className = "item";
-      const imgURL = GITHUB_BASE_URL + img.archivo;
-      div.innerHTML = `
-        <img src="${imgURL}" alt="${img.texto}">
-        <div class="overlay">
-          <p>${img.texto}</p>
-        </div>
-      `;
-      
-      div.addEventListener("click", () => {
-        openModal(index);
-      });
-      
-      contenedor.appendChild(div);
-    });
+/* ===== ELEMENTOS ===== */
+const galeria = document.getElementById("galeria");
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+const modalTexto = document.getElementById("modalTexto");
+const modalCounter = document.getElementById("modalCounter");
 
-    function openModal(index) {
-      currentIndex = index;
-      modal.classList.add("activo");
-      updateModal();
-      document.body.style.overflow = "hidden";
-    }
+let currentIndex = 0;
 
-    function cerrarModal() {
-      modal.classList.remove("activo");
-      document.body.style.overflow = "";
-    }
+/* ===== GALERÍA ===== */
+imagenesRecientes.forEach((img,i)=>{
+  const div=document.createElement("div");
+  div.className="item";
+  div.innerHTML=`<img src="${BASE_URL+img.archivo}">`;
+  div.onclick=()=>openModal(i);
+  galeria.appendChild(div);
+});
 
-    function updateModal() {
-      const imgURL = GITHUB_BASE_URL + imagenesRecientes[currentIndex].archivo;
-      modalImg.src = imgURL;
-      modalImg.alt = imagenesRecientes[currentIndex].texto;
-      modalTexto.textContent = imagenesRecientes[currentIndex].texto;
-      modalCounter.textContent = `${currentIndex + 1} / ${imagenesRecientes.length}`;
-    }
+/* ===== MODAL ===== */
+function openModal(i){
+  currentIndex=i;
+  modal.classList.add("activo");
+  updateModal();
+  document.body.style.overflow="hidden";
+}
 
-    function nextImage() {
-      currentIndex = (currentIndex + 1) % imagenesRecientes.length;
-      updateModal();
-    }
+function cerrarModal(){
+  modal.classList.remove("activo","fullscreen");
+  if(document.fullscreenElement) document.exitFullscreen();
+  document.body.style.overflow="";
+}
 
-    function prevImage() {
-      currentIndex = (currentIndex - 1 + imagenesRecientes.length) % imagenesRecientes.length;
-      updateModal();
-    }
+function updateModal(){
+  modalImg.src=BASE_URL+imagenesRecientes[currentIndex].archivo;
+  modalTexto.textContent=imagenesRecientes[currentIndex].texto;
+  modalCounter.textContent=`${currentIndex+1} / ${imagenesRecientes.length}`;
+}
 
-    cerrar.onclick = cerrarModal;
-    nextBtn.onclick = nextImage;
-    prevBtn.onclick = prevImage;
+function nextImage(){
+  currentIndex=(currentIndex+1)%imagenesRecientes.length;
+  updateModal();
+}
+function prevImage(){
+  currentIndex=(currentIndex-1+imagenesRecientes.length)%imagenesRecientes.length;
+  updateModal();
+}
 
-    modal.onclick = (e) => {
-      if (e.target === modal) cerrarModal();
-    };
+/* ===== EVENTOS ===== */
+document.querySelector(".cerrar").onclick=cerrarModal;
+document.querySelector(".next").onclick=nextImage;
+document.querySelector(".prev").onclick=prevImage;
 
-    document.addEventListener("keydown", (e) => {
-      if (!modal.classList.contains("activo")) return;
-      if (e.key === "Escape") cerrarModal();
-      if (e.key === "ArrowRight") nextImage();
-      if (e.key === "ArrowLeft") prevImage();
-    });
+document.addEventListener("keydown",e=>{
+  if(!modal.classList.contains("activo"))return;
+  if(e.key==="Escape")cerrarModal();
+  if(e.key==="ArrowRight")nextImage();
+  if(e.key==="ArrowLeft")prevImage();
+});
 
-    // Gestos táctiles
-    let touchStartX = 0;
-    let touchEndX = 0;
+/* ===== SWIPE ===== */
+let startX=0;
+modalImg.addEventListener("touchstart",e=>startX=e.changedTouches[0].screenX);
+modalImg.addEventListener("touchend",e=>{
+  const endX=e.changedTouches[0].screenX;
+  if(endX<startX-50)nextImage();
+  if(endX>startX+50)prevImage();
+});
 
-    modalImg.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
+/* ===== CLICK LADOS ===== */
+modalImg.addEventListener("click",e=>{
+  const w=window.innerWidth;
+  if(e.clientX>w*0.6)nextImage();
+  if(e.clientX<w*0.4)prevImage();
+});
 
-    modalImg.addEventListener("touchend", (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      if (touchEndX < touchStartX - 50) nextImage();
-      if (touchEndX > touchStartX + 50) prevImage();
-    });
-  </script>
-
-  <script>
-  // FULLSCREEN con doble clic
-    modalImg.addEventListener("dblclick", () => {
-      if (!document.fullscreenElement) {
-        modal.requestFullscreen().catch(err => {
-          console.log("Error fullscreen:", err);
-        });
-        modal.classList.add("fullscreen");
-      } else {
-        document.exitFullscreen();
-        modal.classList.remove("fullscreen");
-      }
-    });
-
-  // Salir de fullscreen si se cierra el modal
-    function cerrarModal() {
-      modal.classList.remove("activo");
-      modal.classList.remove("fullscreen");
-      if (document.fullscreenElement) {
-        document.exitFullscreen();
-      }
-      document.body.style.overflow = "";
-    }
-  </script>
+/* ===== FULLSCREEN ===== */
+modalImg.addEventListener("dblclick",()=>{
+  if(!document.fullscreenElement){
+    modal.requestFullscreen();
+    modal.classList.add("fullscreen");
+  }else{
+    document.exitFullscreen();
+    modal.classList.remove("fullscreen");
+  }
+});
+</script>
 
 </body>
 </html>
