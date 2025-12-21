@@ -55,9 +55,9 @@ const GALERIA_CONFIG = {
             nivel: "Avanzado",
             tiempo: "22 min"
         }
-    ]
+    ],
 
-    seccion3: [
+    seccion: [
         {
             imagen: "seccion3/problema-1.png",
             titulo: "Límite, agrupación algebraica.",
