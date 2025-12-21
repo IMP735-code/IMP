@@ -57,7 +57,7 @@ const GALERIA_CONFIG = {
         }
     ],
 
-    seccion: [
+    seccion3: [
         {
             imagen: "seccion3/problema-1.png",
             titulo: "Límite, agrupación algebraica.",
