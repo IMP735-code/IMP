@@ -34,21 +34,52 @@ const GALERIA_CONFIG = {
             tiempo: "11 min"
         },
         {
-            imagen: "seccion-2/problema-2.png",
+            imagen: "seccion2/problema-2.png",
             titulo: "Integral definida con sustitución",
             descripcion: "Problema que involucra el cálculo de una integral definida utilizando el método de sustitución (cambio de variable). Es fundamental cambiar correctamente los límites de integración y simplificar la expresión resultante.",
             nivel: "Avanzado",
             tiempo: "18 min"
         },
         {
-            imagen: "seccion-2/problema-3.png",
+            imagen: "seccion2/problema-3.png",
             titulo: "Optimización con derivadas",
             descripcion: "Ejercicio de aplicación práctica donde se debe maximizar o minimizar una función mediante el cálculo de derivadas. Se requiere encontrar puntos críticos y verificar si son máximos o mínimos usando la segunda derivada.",
             nivel: "Intermedio",
             tiempo: "20 min"
         },
         {
-            imagen: "seccion-2/problema-4.png",
+            imagen: "seccion2/problema-4.png",
+            titulo: "Integral por partes",
+            descripcion: "Problema que requiere la aplicación del método de integración por partes. Se debe elegir adecuadamente u y dv, aplicar la fórmula y simplificar hasta obtener la solución completa. Puede requerir aplicar el método más de una vez.",
+            nivel: "Avanzado",
+            tiempo: "22 min"
+        }
+    ]
+
+    seccion3: [
+        {
+            imagen: "seccion3/problema-1.png",
+            titulo: "Límite, agrupación algebraica.",
+            descripcion: "Se reconoce una indeterminación 0/0 al evaluar directamente en x=1. Para resolverla, se reescriben los términos constantes de forma conveniente y se factoriza (x−1). Luego se separan cocientes, aplicando el cociente notable. Finalmente, se sustituyen los valores y se simplifica el cociente resultante para obtener el límite.",
+            nivel: "Intermedio",
+            tiempo: "11 min"
+        },
+        {
+            imagen: "seccion3/problema-2.png",
+            titulo: "Integral definida con sustitución",
+            descripcion: "Problema que involucra el cálculo de una integral definida utilizando el método de sustitución (cambio de variable). Es fundamental cambiar correctamente los límites de integración y simplificar la expresión resultante.",
+            nivel: "Avanzado",
+            tiempo: "18 min"
+        },
+        {
+            imagen: "seccion3/problema-3.png",
+            titulo: "Optimización con derivadas",
+            descripcion: "Ejercicio de aplicación práctica donde se debe maximizar o minimizar una función mediante el cálculo de derivadas. Se requiere encontrar puntos críticos y verificar si son máximos o mínimos usando la segunda derivada.",
+            nivel: "Intermedio",
+            tiempo: "20 min"
+        },
+        {
+            imagen: "seccion3/problema-4.png",
             titulo: "Integral por partes",
             descripcion: "Problema que requiere la aplicación del método de integración por partes. Se debe elegir adecuadamente u y dv, aplicar la fórmula y simplificar hasta obtener la solución completa. Puede requerir aplicar el método más de una vez.",
             nivel: "Avanzado",
