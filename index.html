@@ -60,33 +60,123 @@
       background: #eee;
     }
 
-    /* SECCIÓN RECIENTES */
+    /* SECCIÓN RECIENTES - TÍTULO ANIMADO */
     .section-title {
       text-align: center;
-      color: #d32f2f;
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 1.5rem;
+      color: #00e5ff;
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      letter-spacing: 2px;
+      text-shadow: 
+        0 0 20px rgba(0, 229, 255, 0.6),
+        0 0 40px rgba(0, 229, 255, 0.4);
+      animation: titlePulse 3s ease-in-out infinite;
+      text-transform: uppercase;
     }
+
+    @keyframes titlePulse {
+      0%, 100% { 
+        color: #00e5ff;
+        text-shadow: 
+          0 0 20px rgba(0, 229, 255, 0.8),
+          0 0 40px rgba(0, 229, 255, 0.5);
+      }
+      50% { 
+        color: #ff1744;
+        text-shadow: 
+          0 0 30px rgba(255, 23, 68, 0.8),
+          0 0 60px rgba(255, 23, 68, 0.5);
+      }
+    }
+
     .grid-recientes {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 2rem;
       max-width: 800px;
       margin: 0 auto 3rem;
       padding: 0 1.5rem;
     }
+
+    /* TARJETAS RECIENTES CON EFECTOS ESPECTACULARES */
     .card-reciente {
+      position: relative;
       background: white;
-      border: 1.5px solid #333;
-      border-radius: 20px; /* Bordes redondeados del diseño */
+      border-radius: 25px;
       aspect-ratio: 2/3;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.2s;
+      border: 3px solid transparent;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    .card-reciente:hover { transform: scale(1.05); }
-    .card-reciente img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Borde arcoíris animado */
+    .card-reciente::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      background: linear-gradient(135deg, #00e5ff, #ff1744, #9c27b0, #00e5ff);
+      background-size: 400%;
+      border-radius: 25px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      animation: borderGlow 4s linear infinite;
+    }
+
+    @keyframes borderGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .card-reciente:hover::before {
+      opacity: 1;
+    }
+
+    /* Destello de luz */
+    .card-reciente::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.5) 50%,
+        transparent 70%
+      );
+      transform: rotate(45deg) translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .card-reciente:hover::after {
+      transform: rotate(45deg) translateX(100%);
+    }
+
+    .card-reciente:hover {
+      transform: translateY(-15px) scale(1.08);
+      box-shadow:
+        0 0 40px rgba(0, 229, 255, 0.6),
+        0 0 60px rgba(255, 23, 68, 0.4),
+        0 20px 50px rgba(0,0,0,0.2);
+    }
+
+    .card-reciente img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover;
+      filter: brightness(0.95);
+      transition: all 0.6s ease;
+    }
+
+    .card-reciente:hover img {
+      transform: scale(1.15);
+      filter: brightness(1.1) saturate(1.3);
+    }
 
     /* TARJETA "TODOS LOS PROBLEMAS" (Diseño corregido) */
     .main-card-container {
@@ -98,7 +188,7 @@
       background: white;
       border-radius: 25px;
       padding: 2.5rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra suave */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
     .all-problems-card h2 {
       color: #0b4fb3;
@@ -142,6 +232,16 @@
       color: white;
       font-size: 2.5rem;
       cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .grid-recientes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
     }
   </style>
 </head>
